@@ -18,4 +18,4 @@ Psi.schema = new SimpleSchema({
 	south: { type: Number },
 });
 
-Crises.attachSchema(Psi.schema);
+Psi.attachSchema(Psi.schema);

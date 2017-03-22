@@ -10,8 +10,12 @@ Psi.deny({
 });
 
 Psi.schema = new SimpleSchema({
-  time: {type: Date},
-	values: { type: [Object], optional: true }
+  time: { type: Date },
+	north: { type: Number },
+  central: { type: Number },
+	east: { type: Number },
+	west: { type: Number },
+	south: { type: Number },
 });
 
 Crises.attachSchema(Psi.schema);

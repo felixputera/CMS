@@ -1,12 +1,16 @@
 import { Meteor } from 'meteor/meteor';
 
-import { Crises } from './psi.js';
+import { Psi } from './psi.js';
 
 Meteor.methods({
     'psi.insert'() {
         psi.insert({
             time: new Date(),
-            values: ()=>null, //function to make api call to NEA
+            north,
+            central,
+            east,
+            west,
+            south,
         });
     },
     'psi.update'(){

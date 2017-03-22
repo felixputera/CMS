@@ -11,12 +11,12 @@ Shelters.deny({
 
 Shelters.schema = new SimpleSchema({
   _id: { type: String, regEx: SimpleSchema.RegEx.Id },
-  name: {type: String},
-	type: {type: String},
-	address: {type: String},
-	postalCode: {type: Number},
+  name: { type: String },
+	type: { type: String },
+	address: { type: String },
+	postalCode: { type: Number },
 	coordinates: { type: [Object], optional: true },
-	region: {type: String}
+	region: { type: String }
 });
 
 Shelters.attachSchema(Shelters.schema);

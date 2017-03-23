@@ -12,5 +12,6 @@ SyncedCron.add({
 });
 
 Meteor.startup(() => {
-    SyncedCron.start();
+  Meteor.call('psi.fetch');
+  SyncedCron.start();
 });

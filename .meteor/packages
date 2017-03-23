@@ -21,3 +21,4 @@ aldeed:simple-schema
 aldeed:collection2
 http
 peerlibrary:xml2js
+percolate:synced-cron

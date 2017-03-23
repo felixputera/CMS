@@ -1,2 +1,2 @@
 import './api-register.js'
-import './external-api-register.js'
+import './set-schedule.js'

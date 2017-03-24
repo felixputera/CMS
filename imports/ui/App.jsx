@@ -1,10 +1,10 @@
 // import { Meteor } from 'meteor/meteor';
-import React, {Component, PropTypes} from 'React';
+import React, {Component, PropTypes} from 'react';
 
 import SideBar from './SideBar.jsx';
 import MapUI from './MapUI.jsx';
 
-class Main extends Component {
+class App extends Component {
 
     render(){
         return(
@@ -12,11 +12,11 @@ class Main extends Component {
                 <header>
                     <h1>Container!</h1>
                 </header>
-                <SideBar />
                 <MapUI />
+                <SideBar />
             </div>
         );
     }
 }
 
-export default Main;
+export default App;

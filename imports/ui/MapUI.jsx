@@ -1,6 +1,6 @@
 // import { Meteor } from 'meteor/meteor';
-import React, {Component, PropTypes} from 'React';
-import GoogleMapReact from 'google-map-react';
+import React, {Component, PropTypes} from 'react';
+import GoogleMapReact, { Marker } from 'google-map-react';
 
 import SideBar from './SideBar.jsx';
 
@@ -8,17 +8,22 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export default class MapUI extends Component {
     
-    props = {
-        center: {lat: 59.95, lng: 30.33},
-        zoom: 11
-    };
+    // static defaultProps = {
+    //     center: {lat: 59.95, lng: 30.33},
+    //     zoom: 11
+    // };
 
     render(){
         return (
             <div className="map-ui">
+                <h2>MapUI!</h2>
                 <GoogleMapReact
-                defaultCenter={{lat: 59.95, lng: 30.33}}
-                defaultZoom={11}>
+                center={{lat: 59.95, lng: 30.33}}
+                zoom={11}
+                bootstrapURLKeys={{
+                    key: 'AIzaSyDbhCpS4q1-0LzbLuepBT9JI7bV5PzcP2I',
+                    language: 'en'
+                }} >
 
                 <AnyReactComponent
                 lat={59.955413}

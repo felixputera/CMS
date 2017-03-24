@@ -1,5 +1,5 @@
 // import { Meteor } from 'meteor/meteor';
-import React, {Component, PropTypes} from 'React';
+import React, {Component, PropTypes} from 'react';
 
 class Main extends Component {
 

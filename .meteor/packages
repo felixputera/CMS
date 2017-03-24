@@ -24,3 +24,5 @@ peerlibrary:xml2js
 percolate:synced-cron
 harrison:papa-parse
 underscore
+accounts-ui
+accounts-password

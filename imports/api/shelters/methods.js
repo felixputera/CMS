@@ -12,9 +12,10 @@ Meteor.methods({
         }
         syncMaps = Meteor.wrapAsync(googleMapsClient.geocode);
         response = syncMaps({ address: postalCode });
-        if(response.status === 'OK'){
+        if(response.json.status === 'OK'){
             lat = response.json.results[0].geometry.location.lat;
             lng = response.json.results[0].geometry.location.lng;
+            console.log(lat, lng)
         }
         Shelters.insert({
             name: name,

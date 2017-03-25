@@ -2,7 +2,7 @@
 import React, {Component, PropTypes} from 'react';
 import GoogleMapReact, { Marker } from 'google-map-react';
 
-import SideBar from './SideBar.jsx';
+import SideBar from './SideBarUI.jsx';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 

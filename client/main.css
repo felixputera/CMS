@@ -26,7 +26,21 @@ body {
   height: 100%;
 }
 
-#render-target{
-  width: 100%;
-  height: 100%;
+.reports {
+  height: 50%;
+  width:100%;
+  position: relative;
+}
+
+.requests {
+  height: 50%;
+  width:100%;
+  background-color: #404040;
+  position: absolute;
+  top:50%;
+}
+
+.side-bar-content {
+  min-width: 200px;
+  position: relative;
 }

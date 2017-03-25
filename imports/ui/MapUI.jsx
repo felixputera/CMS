@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 import GoogleMapReact, { Marker } from 'google-map-react';
 
 import SideBar from './SideBarUI.jsx';
-
+// import { googleMapsClient } from '../utils/maps-client.js'
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export default class MapUI extends Component {
@@ -16,7 +16,6 @@ export default class MapUI extends Component {
     render(){
         return (
             <div className="map-ui">
-                <h2>MapUI!</h2>
                 <GoogleMapReact
                 center={{lat: 59.95, lng: 30.33}}
                 zoom={11}

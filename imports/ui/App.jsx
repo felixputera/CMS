@@ -2,7 +2,6 @@
 import React, {Component, PropTypes} from 'react';
 
 import SideBarUI from './SideBarUI.jsx';
-import MapUI from './MapUI.jsx';
 
 class App extends Component {
 
@@ -10,10 +9,9 @@ class App extends Component {
         return(
             <div className="container">
                 <header>
-                    <h1>Container!</h1>
+                    <h1>Crisis Management System</h1>
                 </header>
                 <SideBarUI/>
-                <MapUI />
             </div>
         );
     }

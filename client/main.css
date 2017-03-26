@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #4885ed;
+  background-color: #fafafa;
   background-attachment: fixed;
  
   position: absolute;
@@ -50,8 +50,9 @@ header {
   position: fixed;
   width:100%;
   padding-left: 18px;
-  height:57px;
-  box-shadow: rgba(0, 0, 0, 0.14902) 0px 8px 8px;
+  height:60px;
+  background-color: #4885ed;
+  box-shadow: rgba(0, 0, 0, 0.14902) 0px 5px 8px;
   z-index: 3;
 }
 header>h2{
@@ -67,4 +68,30 @@ header>h2{
   overflow: hidden;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
+}
+
+.drag-handle {
+  cursor:row-resize;
+  margin-right: 10px;
+}
+
+.dragging {
+  cursor: row-resize;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.14902) 0px 2px 5px
+}
+
+ul {
+  padding:0;
+  margin:0;
+}
+
+li{
+  list-style-type: none;
+  padding: 15px 10px;
+  font-size: 18px;
+  font-weight: 300;
+  background-color: #fcfcfc;
+  color: #212121;
+  border: 0.1px solid #f8f8f8;
 }

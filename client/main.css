@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 body {
-  font-family: sans-serif;
-  background-color: #fcfcfc;
+  font-family: 'Roboto', sans-serif;
+  background-color: #4885ed;
   background-attachment: fixed;
  
   position: absolute;
@@ -26,7 +26,45 @@ body {
   height: 100%;
 }
 
-#render-target{
-  width: 100%;
+.reports {
+  height: 50%;
+  width:100%;
+  position: relative;
+}
+
+.requests {
+  height: 50%;
+  width:100%;
+  background-color: #404040;
+  position: absolute;
+  top:50%;
+}
+
+.side-bar-content {
   height: 100%;
+  min-width: 225px;
+  position: relative;
+}
+
+header {
+  position: fixed;
+  width:100%;
+  padding-left: 18px;
+  height:57px;
+  box-shadow: rgba(0, 0, 0, 0.14902) 0px 8px 8px;
+  z-index: 3;
+}
+header>h2{
+  color: white;
+  font-weight: 100;
+}
+
+.markers {
+  background-color: #f4c20d;
+  min-width: 40px;
+  height:40px;
+  padding:3px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
 }

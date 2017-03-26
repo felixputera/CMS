@@ -9,7 +9,7 @@ class App extends Component {
         return(
             <div className="container">
                 <header>
-                    <h1>Crisis Management System</h1>
+                    <h2>Crisis Management System</h2>
                 </header>
                 <SideBarUI/>
             </div>

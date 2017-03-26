@@ -32,7 +32,7 @@ class SideBarUI extends Component {
                 styles={
                     {root:
                         {
-                            top: '75px',
+                            top: '60px',
                             backgroundColor: '#fcfcfc',
                         }
                     }

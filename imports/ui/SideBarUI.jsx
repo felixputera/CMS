@@ -7,6 +7,20 @@ import Reports from './Reports.jsx';
 import Requests from './Requests.jsx'
 
 class SideBarUI extends Component {
+    
+    // constructor(props) {
+    //     super(props);
+    
+    //     this.state = {
+    //     hideCompleted: false,
+    //     };
+    // }
+    
+    // toggleHideCompleted() {
+    //     this.setState({
+    //     hideCompleted: !this.state.hideCompleted,
+    //     });
+    // }
 
     sidebarContent() {
         return (

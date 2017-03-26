@@ -8,6 +8,7 @@ import { Shelters } from '../api/shelters/shelters.js';
 // import { googleMapsClient } from '../utils/maps-client.js'
 
 const AnyReactComponent = ({ text }) => <div className="markers">{text}</div>;
+// import { googleMapsClient } from '../utils/maps-client.js'
 
 class MapUI extends Component {
 

@@ -1,3 +1,4 @@
 node_modules/
 npm-debug.log
 private/api-key.json
+.DS_Store

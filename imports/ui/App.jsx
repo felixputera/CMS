@@ -2,6 +2,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import SideBarUI from './SideBarUI.jsx';
+import MapUI from './MapUI.jsx';
 
 class App extends Component {
 
@@ -11,7 +12,7 @@ class App extends Component {
                 <header>
                     <h2>Crisis Management System</h2>
                 </header>
-                <SideBarUI/>
+                <SideBarUI mainMap={<MapUI />}/>
             </div>
         );
     }

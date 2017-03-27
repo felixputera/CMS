@@ -53,15 +53,25 @@ header {
   height:60px;
   background-color: #4885ed;
   box-shadow: rgba(0, 0, 0, 0.14902) 0px 5px 8px;
-  z-index: 3;
+  z-index: 1001;
 }
 header>h2{
   color: white;
   font-weight: 100;
 }
 
-.markers {
+.Shelters {
   background-color: #f4c20d;
+  min-width: 40px;
+  height:40px;
+  padding:3px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
+}
+
+.Crises {
+  background-color: #db3236;
   min-width: 40px;
   height:40px;
   padding:3px;
@@ -72,12 +82,14 @@ header>h2{
 
 .drag-handle {
   cursor:row-resize;
-  margin-right: 10px;
+  float: right;
+  opacity: 0;
+  transition: 50ms all ease-in;
 }
 
 .dragging {
   cursor: row-resize;
-  z-index: 2;
+  z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.14902) 0px 2px 5px
 }
 
@@ -88,10 +100,14 @@ ul {
 
 li{
   list-style-type: none;
-  padding: 15px 10px;
+  padding: 15px 15px;
   font-size: 18px;
   font-weight: 300;
   background-color: #fcfcfc;
   color: #212121;
   border: 0.1px solid #f8f8f8;
+}
+
+li:hover>.drag-handle{
+  opacity: 1;
 }

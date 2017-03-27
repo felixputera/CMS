@@ -1,33 +1,21 @@
 import { Meteor } from 'meteor/meteor';
 
-import { googleMapsClient } from '../../utils/maps-client.js'
+import { generateCoordinates, generateRegion } from '../../utils/address-tools.js'
 
 import { Shelters } from './shelters.js';
 
 Meteor.methods({
-    'shelters.insert'(name, type, address, postalCode, region) {
-        let lat = 0, lng = 0;
-        if(postalCode.length === 5){
-            postalCode = '0' + postalCode;
-        }
-        syncMaps = Meteor.wrapAsync(googleMapsClient.geocode);
-        response = syncMaps({ address: postalCode });
-        if(response.json.status === 'OK'){
-            lat = response.json.results[0].geometry.location.lat;
-            lng = response.json.results[0].geometry.location.lng;
-            console.log(lat, lng)
-        }
+    'shelters.insert'(name, type, address, postalCode) {
+        const coordinates = generateCoordinates(postalCode);
+        const region = generateRegion(postalCode);
         Shelters.insert({
             name: name,
             type: type,
             address: address,
             postalCode: postalCode,
-            latitude: lat,
-            longitude: lng,
-            region
+            latitude: coordinates.lat,
+            longitude: coordinates.lng,
+            region: region,
         });
-    },
-    'shelters.update'(){
-        
     },
 })

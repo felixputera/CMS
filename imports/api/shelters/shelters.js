@@ -15,8 +15,8 @@ Shelters.schema = new SimpleSchema({
 	type: { type: String },
 	address: { type: String },
 	postalCode: { type: String },
-	latitude: { type: Number, decimal: true, optional: true },
-  longitude: { type: Number, decimal: true, optional: true },
+	latitude: { type: Number, decimal: true },
+  longitude: { type: Number, decimal: true },
 	region: { type: String }
 });
 

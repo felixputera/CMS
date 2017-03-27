@@ -14,11 +14,14 @@ Crises.schema = new SimpleSchema({
   time: { type: Date },
 	region: { type: String },
 	address: { type: String },
-	postalCode: { type: Number },
-	coordinates: { type: [Object], optional: true },
+	postalCode: { type: Number, optional: true },
+	latitude: { type: Number, decimal: true },
+  longitude: { type: Number, decimal: true },
 	type: { type: String },
 	description: { type: String },
-  userId: {type: String, regEx: SimpleSchema.RegEx.Id, optional: true}
+  userId: { type: String, regEx: SimpleSchema.RegEx.Id },
+  assistance: { type: Boolean },
+  resolved: { type: Boolean },
 });
 
 Crises.attachSchema(Crises.schema);

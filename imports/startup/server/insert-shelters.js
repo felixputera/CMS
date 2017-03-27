@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 
+import { Papa } from 'meteor/harrison:papa-parse';
+
 import { Shelters } from '../../api/shelters/shelters.js';
 
 Meteor.startup(() => {
@@ -15,8 +17,7 @@ Meteor.startup(() => {
                 entry.name,
                 entry.description,
                 entry.address,
-                entry.postal_code,
-                'undefined'
+                entry.postal_code
             );
         });
         console.log('Finished inserting shelters data');

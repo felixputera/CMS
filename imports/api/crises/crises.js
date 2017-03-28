@@ -19,7 +19,7 @@ Crises.schema = new SimpleSchema({
   longitude: { type: Number, decimal: true },
 	type: { type: String },
 	description: { type: String },
-  userId: { type: String, regEx: SimpleSchema.RegEx.Id },
+  userId: { type: String, regEx: SimpleSchema.RegEx.Id, optional: true },
   assistance: { type: Boolean },
   resolved: { type: Boolean },
 });

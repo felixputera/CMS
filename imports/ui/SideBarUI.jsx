@@ -18,7 +18,7 @@ class SideBarUI extends Component {
 
         this.state = {
             // mainMap: <MapUI order={['Shelters','Crises']} />,
-            order: ['Crises', 'Shelters', ],
+            order: ['Shelters', 'Fire', 'Flood', 'Road'],
         }
 
         // let map = <MapUI order={this.state.order} ref={(mainMap) => this._mainMap = mainMap}/>;

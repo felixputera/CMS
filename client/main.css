@@ -60,8 +60,18 @@ header>h2{
   font-weight: 100;
 }
 
-.shelter-markers {
+.shelters {
   background-color: #f4c20d;
+  width: 40px;
+  height:40px;
+  padding:3px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
+}
+
+.fire {
+  background-color: #db3236;
   min-width: 40px;
   height:40px;
   padding:3px;
@@ -70,14 +80,49 @@ header>h2{
   box-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
 }
 
-.Crises {
-  background-color: #db3236;
+.flood {
+  background-color: #4885ed;
   min-width: 40px;
   height:40px;
   padding:3px;
   overflow: hidden;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
+}
+
+.road {
+  background-color: #3cba54;
+  min-width: 40px;
+  height:40px;
+  padding:3px;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
+}
+
+.index0 {
+  z-index: 101;
+  position: fixed;
+}
+
+.index1 {
+  z-index: 100;
+  position: fixed;
+}
+
+.index2 {
+  z-index: 99;
+  position: fixed;
+}
+
+.index3 {
+  z-index: 98;
+  position: fixed;
+}
+
+.index4 {
+  z-index: 97;
+  position: fixed;
 }
 
 .drag-handle {

@@ -2,6 +2,8 @@
 import React, {Component, PropTypes} from 'react';
 
 import SideBarUI from './SideBarUI.jsx';
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+// import MapUI from './MapUI.jsx';
 
 class App extends Component {
 
@@ -12,6 +14,7 @@ class App extends Component {
                     <h2>Crisis Management System</h2>
                 </header>
                 <SideBarUI/>
+                <AccountsUIWrapper className="login"/>
             </div>
         );
     }

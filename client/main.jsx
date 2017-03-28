@@ -19,8 +19,9 @@ Template.login.events ({
 			if (error) {
 				return console.log("Facebook login failed!");
 			} else {
-			return console.log("Added successfully");
+			console.log("Added successfully");
 			}
+			Meteor.call('sendEmail');
 		})
 	},
 	'click #login-buttons-logout': function(event) {

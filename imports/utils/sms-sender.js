@@ -10,9 +10,8 @@ let twilio = require('twilio');
 let client = new twilio.RestClient('AC57c5ef6c2e8c6ed495d5675b577fc369', '73007e7d99d9c42308bd2446a431e6ae');
 
 
-export const sendSms = (regionArea, address, type, description) => {
+export const sendSms = (regionArea, message) => {
     let phoneNumbers = Sms.find({region: regionArea});
-    let message = "[INCIDENT IN YOUR AREA] A " + type + " just happened at " + address + ". " + description;
     phoneNumbers.forEach(function (num){
         client.messages.create({
             body: message,

@@ -3,12 +3,17 @@ import { HTTP } from 'meteor/http'
 import { _ } from 'meteor/underscore'
 
 import { Psi } from './psi.js';
+import '../../utils/sms-sender.js';
 
 const neaKey = JSON.parse(Assets.getText("api-key.json")).nea;
 
 Meteor.methods({
     'psi.fetch'(north, central, east, west, south) {
         let jsonFetched = neaApiFetch();
+        _.each(jsonFetched, (regionVal, region) => {
+            if (regionVal >= 150)
+                sendAlert(region, regionVal);
+        });
         Psi.insert({
             time: new Date(),
             north: jsonFetched.north,
@@ -17,6 +22,7 @@ Meteor.methods({
             west: jsonFetched.west,
             south: jsonFetched.south,
         });
+        
     },
 })
 
@@ -51,3 +57,8 @@ const convertCodeToName = (code) =>
   code === 'rWE' ? 'west' :
   code === 'rSO' ? 'south' :
   null
+
+const sendAlert = (regionArea, regionPsi) => {
+    let message = "[HIGH PSI ALERT] PSI in your area has reached " + regionPsi + ". You are advised to stay indoors.";
+    sendSMS(regionArea, message);
+}

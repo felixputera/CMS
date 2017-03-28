@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 
 import { Crises } from './crises.js';
 
+import '../../utils/sms-sender.js';
+
 Meteor.methods({
     'crises.insert'(region, address, postalCode, type, description) {
         // if (!this.userId) {
@@ -17,8 +19,11 @@ Meteor.methods({
             description,
             //reporter: this.userId,
         });
-    },
-    'crises.update'(){
-        
-    },
+        sendAlert(region, address, type, description);
+    }
 })
+
+const sendAlert = (regionArea, address, type, description) => {
+    let message = "[INCIDENT IN YOUR AREA] A " + type + " just happened at " + address + ". " + description;
+    sendSMS(regionArea, message);
+}

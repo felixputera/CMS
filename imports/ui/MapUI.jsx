@@ -55,9 +55,9 @@ export default class MapUI extends Component {
         let orderedMarkers = this.props.markers;
 
         return orderedMarkers.Crises.map((marker) => {
-            return this.state.order.map((value, index) => {
-                if(value == marker.category){
-                    let zIndex = classnames("crises-markers", 'index-${index}');
+            return this.props.order.map((value, index) => {
+                if(value == markers.type){
+                    let zIndex = classnames(marker.type, 'index' + index );
                     return (
                     <AnyReactComponent
                     key={marker._id}

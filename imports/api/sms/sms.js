@@ -11,8 +11,8 @@ Sms.deny({
 
 Sms.schema = new SimpleSchema({
   _id: { type: String, regEx: SimpleSchema.RegEx.Id },
-  phoneNumber: { type: Number },
+  phoneNumber: { type: String },
   region: { type: String }
 });
 
-Sms.attachSchema(SMS.schema);
+Sms.attachSchema(Sms.schema);

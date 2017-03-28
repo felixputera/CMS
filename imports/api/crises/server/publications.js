@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor'
 
 import { Crises } from '../crises.js'
 
-Meteor.publish('crises.fire', () => {
+Meteor.publish('crises.fire', function publishFire(){
     return Crises.find({
         type: 'fire'
     }, {
@@ -10,7 +10,7 @@ Meteor.publish('crises.fire', () => {
     });
 });
 
-Meteor.publish('crises.flood', () => {
+Meteor.publish('crises.flood', function publishFlood(){
     return Crises.find({
         type: 'flood'
     }, {
@@ -18,7 +18,7 @@ Meteor.publish('crises.flood', () => {
     });
 });
 
-Meteor.publish('crises.road', () => {
+Meteor.publish('crises.road', function publishRoad(){
     return Crises.find({
         type: 'road'
     }, {

@@ -27,3 +27,8 @@ underscore
 accounts-ui
 accounts-password
 react-meteor-data
+accounts-facebook
+session
+facebook-config-ui
+autopublish
+stevezhu:fbgraph

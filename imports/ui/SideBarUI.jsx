@@ -21,7 +21,6 @@ class SideBarUI extends Component {
     //     hideCompleted: !this.state.hideCompleted,
     //     });
     // }
-
     sidebarContent() {
         return (
             <div className="side-bar-content">

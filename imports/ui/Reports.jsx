@@ -48,7 +48,7 @@ export default class Reports extends Component{
         // () => this.state.parentSideBar.state.mainMap.refresh();
 
         this.props.onOrderChanged(this.state.order);
-        
+
         // console.log(() => {return this.props.parentSideBar.props.mainMap.state.order});
         // console.log(this.props.parentSideBar.props.mainMap.props.order);
     };
@@ -63,6 +63,6 @@ export default class Reports extends Component{
     }
 }
 
-Reports.propTypes = {
-    parentSideBar: PropTypes.object.isRequired,
-}
+// Reports.propTypes = {
+//     parentSideBar: PropTypes.object.isRequired,
+// }

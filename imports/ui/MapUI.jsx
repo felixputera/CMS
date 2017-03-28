@@ -2,15 +2,15 @@
 import React, {Component, PropTypes} from 'react';
 import GoogleMapReact, { Marker } from 'google-map-react';
 import { createContainer } from 'meteor/react-meteor-data';
+import classnames from 'classnames';
 
 import SideBar from './SideBarUI.jsx';
-import { Shelters } from '../api/shelters/shelters.js';
 // import { googleMapsClient } from '../utils/maps-client.js'
 
 const AnyReactComponent = ({ text, kelas }) => <div className={kelas}>{text}</div>;
 // import { googleMapsClient } from '../utils/maps-client.js'
 
-class MapUI extends Component {
+export default class MapUI extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -18,11 +18,10 @@ class MapUI extends Component {
         }
     }
 
-    placeMarkers(){
-        let markers = this.props.markers;
-        let filtered = [];
+    placeShelterMarkers(){
+        /*let filtered = [];
         this.state.order.forEach(category => {
-            filtered.unshift(markers[category].map((marker) => {
+            filtered.unshift(this.props.markers[category].map((marker) => {
                 return (
                     <AnyReactComponent
                     key={marker._id}
@@ -34,7 +33,43 @@ class MapUI extends Component {
                     );
             }));
         });
-        return filtered;
+        return filtered;*/
+        let orderedMarkers = this.props.markers;
+        // if (this.state.hideCompleted) {
+        // filteredTasks = filteredTasks.filter(task => !task.checked);
+        // }
+        return orderedMarkers.Shelters.map((task) => {
+            return (
+                <AnyReactComponent
+                key={marker._id}
+                lat={marker.latitude}
+                lng={marker.longitude}
+                text={marker.name}
+                kelas="shelter-markers"
+                />
+            );
+        });
+    }
+
+    placeCrisesMarkers(){
+        let orderedMarkers = this.props.markers;
+
+        return orderedMarkers.Crises.map((task) => {
+            return this.state.order.map((value, index) => {
+                if(value == marker.category){
+                    let zIndex = classnames("crises-markers", 'index-${index}');
+                    return (
+                    <AnyReactComponent
+                    key={marker._id}
+                    lat={marker.latitude}
+                    lng={marker.longitude}
+                    text={marker.name}
+                    kelas={zIndex}
+                    />
+                    );
+                }
+            });
+        });
     }
 
     // refresh() {
@@ -43,6 +78,7 @@ class MapUI extends Component {
     // }
 
     render(){
+        console.log(this.props.order);
         return (
             <div className="map-ui">
                 <GoogleMapReact ref="map"
@@ -53,7 +89,8 @@ class MapUI extends Component {
                     language: 'en'
                 }} >
 
-                {this.placeMarkers()}
+                {this.placeCrisesMarkers()}
+                {this.placeShelterMarkers()}
 
                 </GoogleMapReact>
             </div>
@@ -61,17 +98,17 @@ class MapUI extends Component {
     }
 }
 
-export default createContainer(() => {
-    Meteor.subscribe('shelters');
-    return{
-        markers:{
-            "Shelters": Shelters.find().fetch().slice(1,30),
-            "Crises": Shelters.find().fetch().slice(31,60),
-        },
-    };
-}, MapUI)
+// export default createContainer(() => {
+//     Meteor.subscribe('shelters');
+//     return{
+//         markers:{
+//             "Shelters": Shelters.find().fetch().slice(1,30),
+//             "Crises": Shelters.find().fetch().slice(31,60),
+//         },
+//     };
+// }, MapUI)
 
-MapUI.PropTypes = {
-    markers: PropTypes.object.isRequired,
-    order: PropTypes.array.isRequired,
-}
+// MapUI.propTypes = {
+//     markers: PropTypes.object.isRequired,
+//     order: PropTypes.array.isRequired,
+// }

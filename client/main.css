@@ -111,3 +111,7 @@ li{
 li:hover>.drag-handle{
   opacity: 1;
 }
+
+.login {
+  position: fixed;
+}

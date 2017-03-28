@@ -6,7 +6,9 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import MapUI from './MapUI.jsx';
 import Reports from './Reports.jsx';
-import Requests from './Requests.jsx'
+import Requests from './Requests.jsx';
+
+import { Shelters } from '../api/shelters/shelters.js';
 
 class SideBarUI extends Component {
     
@@ -15,7 +17,7 @@ class SideBarUI extends Component {
 
         this.state = {
             // mainMap: <MapUI order={['Shelters','Crises']} />,
-            order: ['Shelters', 'Crises'],
+            order: ['Crises', 'Shelters', ],
         }
 
         // let map = <MapUI order={this.state.order} ref={(mainMap) => this._mainMap = mainMap}/>;
@@ -41,17 +43,17 @@ class SideBarUI extends Component {
         });
         console.log("sidebar now: " + this.state.order);
         // console.log(this._mainMap);
-        this._mainMap.placeMarkers();
+        // this._mainMap.placeMarkers();
         // console.log(this.refs.sideBar.props.children.props.refresh());
     }
 
     sidebarContent() {
         return (
             <div className="side-bar-content">
-                <Reports parentSideBar={this} order={this.state.order} onOrderChanged={this.handleChange.bind(this)}/>
+                <Reports order={this.state.order} onOrderChanged={this.handleChange.bind(this)}/>
                 {/*{ Meteor.userId() in adminWololo?
                 }*/}
-                <Requests parentSideBar={this}/>
+                <Requests/>
             </div>
         )
     }
@@ -68,7 +70,7 @@ class SideBarUI extends Component {
         return(
             <div className="side-bar">
                 <Sidebar ref="sideBar"
-                children={<MapUI order={this.state.order} ref={(mainMap) => this._mainMap = mainMap}/>}
+                children={<MapUI order={this.state.order} markers={this.props.mapMarkers}/>}
                 sidebar={
                     this.sidebarContent()
                 }
@@ -91,8 +93,20 @@ class SideBarUI extends Component {
     }
 }
 
+SideBarUI.propTypes = {
+    mapMarkers: React.PropTypes.object.isRequired,
+}
+
+export default createContainer(() => {
+    Meteor.subscribe('shelters');
+    return{
+        mapMarkers:{
+            "Shelters": Shelters.find().fetch().slice(1,30),
+            "Crises": Shelters.find().fetch().slice(31,60),
+        },
+    };
+}, SideBarUI)
+
 // SideBarUI.propTypes = {
 //     mainMap: PropTypes.object.isRequired,
 // }
-
-export default SideBarUI;

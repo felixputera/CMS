@@ -39,16 +39,20 @@ export default class MapUI extends Component {
         // filteredTasks = filteredTasks.filter(task => !task.checked);
         // }
         return orderedMarkers.Shelters.map((marker) => {
-            return (
-                <AnyReactComponent
-                key={marker._id}
-                lat={marker.latitude}
-                lng={marker.longitude}
-                text={marker.name}
-                kelas="shelter-markers"
-                />
-            );
-        });
+            return this.props.order.map((value, index) => {
+                if(value == "Shelters"){
+                    let zIndex = classnames("shelters", 'index' + index);
+                    return (
+                        <AnyReactComponent
+                        key={marker._id}
+                        lat={marker.latitude}
+                        lng={marker.longitude}
+                        text={marker.name}
+                        kelas={zIndex}
+                        />
+                    );}
+                });
+            });
     }
 
     placeCrisesMarkers(){
@@ -56,8 +60,8 @@ export default class MapUI extends Component {
 
         return orderedMarkers.Crises.map((marker) => {
             return this.props.order.map((value, index) => {
-                if(value == markers.type){
-                    let zIndex = classnames(marker.type, 'index' + index );
+                if(value.toLowerCase() == marker.type){
+                    let zIndex = classnames(marker.type, 'index' + index);
                     return (
                     <AnyReactComponent
                     key={marker._id}
@@ -78,7 +82,7 @@ export default class MapUI extends Component {
     // }
 
     render(){
-        console.log(this.props.order);
+        // console.log(this.props.order);
         return (
             <div className="map-ui">
                 <GoogleMapReact ref="map"

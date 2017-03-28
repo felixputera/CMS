@@ -9,6 +9,7 @@ import Reports from './Reports.jsx';
 import Requests from './Requests.jsx';
 
 import { Shelters } from '../api/shelters/shelters.js';
+import { Crises } from '../api/crises/crises.js';
 
 class SideBarUI extends Component {
     
@@ -67,7 +68,7 @@ class SideBarUI extends Component {
     // }
 
     render(){
-        console.log('Bullshit ', this.props.mapMarkers)
+        // console.log('Bullshit ', this.props.mapMarkers)
         return(
             <div className="side-bar">
                 <Sidebar ref="sideBar"
@@ -100,10 +101,13 @@ SideBarUI.propTypes = {
 
 export default createContainer(() => {
     Meteor.subscribe('shelters');
+    Meteor.subscribe('crises.fire');
+    Meteor.subscribe('crises.flood');
+    Meteor.subscribe('crises.road');
     return{
         mapMarkers:{
-            "Shelters": Shelters.find().fetch().slice(1,30),
-            "Crises": Shelters.find().fetch().slice(31,60),
+            "Shelters": Shelters.find().fetch().slice(0,30),
+            "Crises": Crises.find().fetch(),
         },
     };
 }, SideBarUI)

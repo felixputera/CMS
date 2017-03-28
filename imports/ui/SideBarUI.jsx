@@ -67,6 +67,7 @@ class SideBarUI extends Component {
     // }
 
     render(){
+        console.log('Bullshit ', this.props.mapMarkers)
         return(
             <div className="side-bar">
                 <Sidebar ref="sideBar"

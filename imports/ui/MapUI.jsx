@@ -38,7 +38,7 @@ export default class MapUI extends Component {
         // if (this.state.hideCompleted) {
         // filteredTasks = filteredTasks.filter(task => !task.checked);
         // }
-        return orderedMarkers.Shelters.map((task) => {
+        return orderedMarkers.Shelters.map((marker) => {
             return (
                 <AnyReactComponent
                 key={marker._id}
@@ -54,7 +54,7 @@ export default class MapUI extends Component {
     placeCrisesMarkers(){
         let orderedMarkers = this.props.markers;
 
-        return orderedMarkers.Crises.map((task) => {
+        return orderedMarkers.Crises.map((marker) => {
             return this.state.order.map((value, index) => {
                 if(value == marker.category){
                     let zIndex = classnames("crises-markers", 'index-${index}');
@@ -98,17 +98,7 @@ export default class MapUI extends Component {
     }
 }
 
-// export default createContainer(() => {
-//     Meteor.subscribe('shelters');
-//     return{
-//         markers:{
-//             "Shelters": Shelters.find().fetch().slice(1,30),
-//             "Crises": Shelters.find().fetch().slice(31,60),
-//         },
-//     };
-// }, MapUI)
-
-// MapUI.propTypes = {
-//     markers: PropTypes.object.isRequired,
-//     order: PropTypes.array.isRequired,
-// }
+MapUI.propTypes = {
+    markers: PropTypes.object.isRequired,
+    order: PropTypes.array.isRequired,
+}

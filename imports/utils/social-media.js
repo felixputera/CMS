@@ -2,24 +2,19 @@ import { HTTP } from 'meteor/http';
 import { Email } from 'meteor/email';
 import Twit from 'twit';
 
-const facebookKey = JSON.parse(Assets.getText("api-key.json")).facebook;
+const keys = JSON.parse(Assets.getText("api-key.json"));
 
 const T = new Twit({
-	consumer_key:         /*consumer key*/,
-	consumer_secret:      /*consumer secret*/,
-	access_token:         /*access token*/,
-	access_token_secret:  /*access secret*/,
-	timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
-})
+	consumer_key: keys.twitter.consumer_key,
+	consumer_secret: keys.twitter.consumer_secret,
+	access_token: keys.twitter.access_token,
+	access_token_secret: keys.twitter.access_token_secret,
+	timeout_ms: 60*1000,  // optional HTTP request timeout to apply to all requests.
+});
 
-export const loginFacebook = () => {
-
-};
-
-export const postFacebook = (event) => {
-	let pageAccessToken = facebookKey;
-	let message = "An update on " + event;
-	return HTTP.post("https://graph.facebook.com/v2.8/286242935138459/feed?message=" + message + "&access_token=" + pageAccessToken);
+export const postFacebook = (text) => {
+	let pageAccessToken = keys.facebook;
+	return HTTP.post("https://graph.facebook.com/v2.8/286242935138459/feed?message=" + text + "&access_token=" + pageAccessToken);
 };
 
 export const sendEmail = (text) => {
@@ -39,9 +34,9 @@ export const sendEmail = (text) => {
 	return console.log("Email sent");
 };
 
-export const postTwitter = (event) => {
+export const postTwitter = (text) => {
     T.post('statuses/update', { status: text }, function(err, data, response) {
 	    console.log(data);
-	};
+	});
 	return console.log("Twitter sent");
 };

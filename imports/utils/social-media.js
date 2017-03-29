@@ -2,9 +2,14 @@ import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 import { Email } from 'meteor/email';
 
+const facebookKey = JSON.parse(Assets.getText("api-key.json")).facebook;
+
+export const loginFacebook = () => {
+
+}
+
 export const postFacebook = (event) => {
-	let userAccessToken = Meteor.user().services.facebook.accessToken;
-	let pageAccessToken = HTTP.get("https://graph.facebook.com/v2.8/286242935138459?access_token=" + userAccessToken + "&fields=access_token");
+	let pageAccessToken = facebookKey;
 	let message = "An update on " + event;
 	return HTTP.post("https://graph.facebook.com/v2.8/286242935138459/feed?message=" + message + "&access_token=" + pageAccessToken);
 }

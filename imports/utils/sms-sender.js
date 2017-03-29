@@ -1,13 +1,11 @@
-import { Meteor } from 'meteor/meteor';
+let twilio = require('twilio');
 
 import { Sms } from '../api/sms/sms.js';
 
-
-
-let twilio = require('twilio');
+const twilioKey = JSON.parse(Assets.getText("api-key.json")).twilio;
 
 // Find your account sid and auth token in your Twilio account Console.
-let client = new twilio.RestClient('AC57c5ef6c2e8c6ed495d5675b577fc369', '73007e7d99d9c42308bd2446a431e6ae');
+let client = new twilio.RestClient(twilioKey.accountSid, twilioKey.authToken);
 
 
 export const sendSms = (regionArea, message) => {
@@ -16,7 +14,7 @@ export const sendSms = (regionArea, message) => {
         client.messages.create({
             body: message,
             to: num.phoneNumber,  // Text this number
-            from: '+61439071940' // From a valid Twilio number
+            from: twilioKey.phoneNumber // From a valid Twilio number
         }, function(err, message) {
             if(err) {
                 console.error(err.message);

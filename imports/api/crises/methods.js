@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 import { generateCoordinates } from '../../utils/address-tools.js'
-import { sendSMS } from '../../utils/sms-sender.js';
+import { sendSms } from '../../utils/sms-sender.js';
 
 import { Crises } from './crises.js';
 
@@ -42,5 +42,5 @@ Meteor.methods({
 
 const sendAlert = (regionArea, address, type, description) => {
     let message = "[INCIDENT IN YOUR AREA] A " + type + " just happened at " + address + ". " + description;
-    sendSMS(regionArea, message);
+    sendSms(regionArea, message);
 }

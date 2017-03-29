@@ -3,7 +3,7 @@ import { HTTP } from 'meteor/http'
 import { _ } from 'meteor/underscore'
 
 import { Psi } from './psi.js';
-import '../../utils/sms-sender.js';
+import { sendSms } from '../../utils/sms-sender.js';
 
 const neaKey = JSON.parse(Assets.getText("api-key.json")).nea;
 
@@ -24,7 +24,7 @@ Meteor.methods({
         });
         
     },
-})
+});
 
 const neaApiFetch = function(){
     const finalResult = {};
@@ -44,11 +44,11 @@ const neaApiFetch = function(){
 
                 }
             });
-        };
+        }
     });
     return finalResult;
     
-}
+};
 
 const convertCodeToName = (code) =>
   code === 'rNO' ? 'north' :
@@ -56,9 +56,9 @@ const convertCodeToName = (code) =>
   code === 'rEA' ? 'east' :
   code === 'rWE' ? 'west' :
   code === 'rSO' ? 'south' :
-  null
+  null;
 
 const sendAlert = (regionArea, regionPsi) => {
     let message = "[HIGH PSI ALERT] PSI in your area has reached " + regionPsi + ". You are advised to stay indoors.";
-    sendSMS(regionArea, message);
-}
+    sendSms(regionArea, message);
+};

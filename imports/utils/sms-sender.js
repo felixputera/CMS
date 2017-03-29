@@ -22,4 +22,4 @@ export const sendSms = (regionArea, message) => {
         });
     console.log('sms sent');
     });
-}
+};

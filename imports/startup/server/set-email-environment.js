@@ -1,0 +1,1 @@
+process.env.MAIL_URL = "smtp://postmaster%40sandboxdd99786e73cd4f899e58de158b067f4e.mailgun.org:70725e0b78f45b2303734d0062c96338@smtp.mailgun.org:587";

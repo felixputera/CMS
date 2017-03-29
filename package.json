@@ -17,6 +17,7 @@
     "react-dom": "^15.4.2",
     "react-sidebar": "^2.3.0",
     "react-sortable-hoc": "^0.6.1",
-    "twilio": "^2.11.1"
+    "twilio": "^2.11.1",
+    "twit": "^2.2.5"
   }
 }

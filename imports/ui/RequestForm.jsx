@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react';
+import ReactDOM from 'react-dom';
 
 export default class RequestForm extends Component {
   constructor(props) {
@@ -27,19 +28,19 @@ export default class RequestForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const type = React.findDOMNode(this.refs.type).value.trim();
-    const caller = React.findDOMNode(this.refs.caller).value.trim();
-    const number = React.findDOMNode(this.refs.number).value.trim();
-    const address = React.findDOMNode(this.refs.address).value.trim();
+    const type = ReactDOM.findDOMNode(this.refs.type).value.trim();
+    const caller = ReactDOM.findDOMNode(this.refs.caller).value.trim();
+    const number = ReactDOM.findDOMNode(this.refs.number).value.trim();
+    const address = ReactDOM.findDOMNode(this.refs.address).value.trim();
     if (!type || !caller || !number || !address) {
         return;
     }
 
-    Meteor.call('requests.insert',type, caller,number,address);
+    Meteor.call('requests.insert',type,caller,number,address);
 
-    React.findDOMNode(this.refs.caller).value = '';
-    React.findDOMNode(this.refs.number).value = '';
-    React.findDOMNode(this.refs.address).value = '';
+    ReactDOM.findDOMNode(this.refs.caller).value = '';
+    ReactDOM.findDOMNode(this.refs.number).value = '';
+    ReactDOM.findDOMNode(this.refs.address).value = '';
     return;
   }
 
@@ -49,7 +50,7 @@ export default class RequestForm extends Component {
 
   render() {
     return (
-      <form>
+      <form className="request-form">
         <label>
           NEW 
           <select ref="type" name="type" value={this.state.type} onChange={this.handleInputChange}>
@@ -87,7 +88,7 @@ export default class RequestForm extends Component {
             name="address"
             type="text"
             ref="address"
-            value={this.state.number}
+            value={this.state.address}
             onChange={this.handleInputChange} />
         </label>
         <button

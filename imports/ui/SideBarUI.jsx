@@ -13,6 +13,7 @@ import Requests from './Requests.jsx';
 
 import { Shelters } from '../api/shelters/shelters.js';
 import { Crises } from '../api/crises/crises.js';
+import { RequestsAss } from '../api/requests/requests.js';
 
 class SideBarUI extends Component {
     
@@ -60,7 +61,7 @@ class SideBarUI extends Component {
                 <Reports order={this.state.order} onOrderChanged={this.handleChange.bind(this)}/>
                 {/*{ Meteor.userId() in adminWololo?
                 }*/}
-                <Requests/>
+                <Requests requestlist={this.props.mapMarkers.Requests}/>
             </div>
         )
     }
@@ -110,10 +111,12 @@ export default createContainer(() => {
     Meteor.subscribe('crises.fire');
     Meteor.subscribe('crises.flood');
     Meteor.subscribe('crises.road');
+    Meteor.subscribe('requests');
     return{
         mapMarkers:{
             "Shelters": Shelters.find().fetch().slice(0,30),
             "Crises": Crises.find().fetch(),
+            "Requests": RequestsAss.find().fetch(),
         },
     };
 }, SideBarUI)

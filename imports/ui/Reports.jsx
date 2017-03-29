@@ -58,6 +58,6 @@ export default class Reports extends Component{
     }
 }
 
-// Reports.propTypes = {
-//     parentSideBar: PropTypes.object.isRequired,
-// }
+Reports.propTypes = {
+    order: PropTypes.array.isRequired,
+}

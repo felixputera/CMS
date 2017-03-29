@@ -131,6 +131,13 @@ header>h2{
 
 li.report-item{
   display:flex;
+  list-style-type: none;
+  padding: 15px 15px;
+  font-size: 18px;
+  font-weight: 300;
+  background-color: #fcfcfc;
+  color: #212121;
+  border: 0.1px solid #f8f8f8;
 }
 
 .drag-handle {
@@ -150,16 +157,6 @@ li.report-item{
 ul {
   padding:0;
   margin:0;
-}
-
-li{
-  list-style-type: none;
-  padding: 15px 15px;
-  font-size: 18px;
-  font-weight: 300;
-  background-color: #fcfcfc;
-  color: #212121;
-  border: 0.1px solid #f8f8f8;
 }
 
 li:hover>.drag-handle{
@@ -186,4 +183,14 @@ li:hover>.drag-handle{
 
 #login-buttons .login-close-text{
   float:right;
+}
+
+.request-form {
+  width:500px;
+  height:500px;
+  position:fixed;
+  z-index:1500;
+  bottom:10px;
+  left:200px;
+  background-color: #404040;
 }

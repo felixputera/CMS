@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { Mongo } from 'meteor/mongo';
  
-export const Requests = new Mongo.Collection('requests');
+export const RequestsAss = new Mongo.Collection('requests');
  
 Meteor.methods({
   'requests.insert'(type,name,number,address) {
@@ -12,7 +12,7 @@ Meteor.methods({
     //  throw new Meteor.Error('not-authorized');
     //}
 
-    Reports.insert({
+    RequestsAss.insert({
       type : type,
       name : name,
       number : number,
@@ -23,9 +23,9 @@ Meteor.methods({
 
   'requests.remove'(reqId) {
 
-    const request = Requests.findOne(reqId);
+    const request = RequestsAss.findOne(reqId);
  
-    Requests.remove(reqId);
+    RequestsAss.remove(reqId);
   },
 
   // 'requests.edit'(reqId,setType,setName,setNumber,setAddress) {

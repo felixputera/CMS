@@ -10,8 +10,10 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
         const coordinates = generateCoordinates(address);
+        let d = new Date();
         Crises.insert({
-            time: new Date(),
+            time: d,
+            hour: d.getHours(),
             region: region,
             address: address,
             postalCode: postalCode,

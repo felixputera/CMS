@@ -2,30 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import {SortableContainer, SortableElement, SortableHandle, arrayMove} from 'react-sortable-hoc';
 // import ReactDOM from 'react-dom';
 
-const DragHandle = SortableHandle(() => <span className="drag-handle">::</span>);
-
-const SortableItem = SortableElement(({value}) =>
-    <li>
-        <input
-          type="checkbox"
-          readOnly
-          checked={true}
-          onClick={this.toggleHideShelter}
-        />
-        {value}
-        <DragHandle />
-    </li>
-);
-
-const SortableList = SortableContainer(({items}) => {
-  return (
-    <ul>
-      {items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} />
-      ))}
-    </ul>
-  );
-});
+import { ReportList } from './ReportList.jsx';
 
 export default class Reports extends Component{
     constructor(props){
@@ -53,13 +30,31 @@ export default class Reports extends Component{
         // console.log(this.props.parentSideBar.props.mainMap.props.order);
     };
 
+    doCheckUpdate(event, check){
+        let newOrder = this.state.order;
+        let name = event.target.nextSibling.firstChild.nextSibling.innerHTML;
+        newOrder.forEach((pair) => {
+            if(pair.name == name) {
+                pair.hide = !check;
+            }
+        });
+        this.props.onOrderChanged(newOrder);
+    }
+
+    // componentDidMount(){
+    //     return true;
+    // }
+
     render() {
-        return <SortableList className="reports"
-        helperClass="dragging"
-        items={this.state.order}
-        onSortEnd={this.onSortEnd.bind(this)} 
-        useDragHandle={true}
-        lockAxis='y'/>;
+        return (
+            <ReportList className="reports"
+            helperClass="dragging"
+            items={this.state.order}
+            onSortEnd={this.onSortEnd.bind(this)} 
+            useDragHandle={true}
+            lockAxis='y'
+            updateState={this.doCheckUpdate.bind(this)}/>
+        );
     }
 }
 

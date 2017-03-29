@@ -102,34 +102,43 @@ header>h2{
 
 .index0 {
   z-index: 101;
-  position: fixed;
+  position: absolute;
 }
 
 .index1 {
   z-index: 100;
-  position: fixed;
+  position: absolute;
 }
 
 .index2 {
   z-index: 99;
-  position: fixed;
+  position: absolute;
 }
 
 .index3 {
   z-index: 98;
-  position: fixed;
+  position: absolute;
 }
 
 .index4 {
   z-index: 97;
-  position: fixed;
+  position: absolute;
+}
+
+.hiddenMarkers {
+  display: none;
+}
+
+li.report-item{
+  display:flex;
 }
 
 .drag-handle {
   cursor:row-resize;
-  float: right;
+  flex:1;
+  float:right;
   opacity: 0;
-  transition: 50ms all ease-in;
+  transition: 100ms all ease-in;
 }
 
 .dragging {
@@ -157,6 +166,24 @@ li:hover>.drag-handle{
   opacity: 1;
 }
 
-.login {
+#login-buttons {
+  display: block;
   position: fixed;
+  z-index: 1002;
+  right: 15px;
+  top:20px;
+}
+
+#login-signin-link.login-link-text:link {
+  float:right;
+  /*text-decoration: none !important;*/
+}
+
+#login-dropdown-list {
+  left:unset;
+  right:5px;
+}
+
+#login-buttons .login-close-text{
+  float:right;
 }

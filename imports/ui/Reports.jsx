@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {SortableContainer, SortableElement, SortableHandle, arrayMove} from 'react-sortable-hoc';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
 // import ReactDOM from 'react-dom';
 
 import { ReportList } from './ReportList.jsx';
@@ -47,14 +49,18 @@ export default class Reports extends Component{
 
     render() {
         return (
-            <ReportList className="reports"
-            helperClass="dragging"
-            items={this.state.order}
-            info={this.props.info}
-            onSortEnd={this.onSortEnd.bind(this)} 
-            useDragHandle={true}
-            lockAxis='y'
-            updateState={this.doCheckUpdate.bind(this)}/>
+            <div>
+                <Subheader>Reports</Subheader>
+                <Divider/>
+                <ReportList className="reports"
+                helperClass="dragging"
+                items={this.state.order}
+                info={this.props.info}
+                onSortEnd={this.onSortEnd.bind(this)} 
+                useDragHandle={true}
+                lockAxis='y'
+                updateState={this.doCheckUpdate.bind(this)}/>
+            </div>
         );
     }
 }

@@ -151,14 +151,17 @@ export default class RequestForm extends Component {
             <CardActions className="request-form-actions">
               <IconButton
               onTouchTap={this.handleReset.bind(this)}
-              style={style.actionButton}>
-                <FontIcon className="material-icons md-24" style={{color:'D32F2F'}}>clear</FontIcon>
+              style={style.actionButton}
+              tooltip="Clear form"
+              tooltipPosition="top-center">
+                <FontIcon className="material-icons md-24">clear</FontIcon>
               </IconButton>
               <IconButton
               onTouchTap={this.handleSubmit.bind(this)}
               style={style.actionButton}
-              tooltip={(this.state.number && this.state.address && this.state.type && this.state.number) ? null : "All field is required"} tooltipPosition="top-center">
-              <FontIcon className="material-icons md-24">done</FontIcon>  
+              tooltip={(this.state.number && this.state.address && this.state.type && this.state.number) ? null : "All field is required"}
+              tooltipPosition="top-center">
+                <FontIcon className="material-icons md-24">done</FontIcon>  
               </IconButton>
             </CardActions>
           </div>

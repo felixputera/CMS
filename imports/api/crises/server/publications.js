@@ -25,3 +25,11 @@ Meteor.publish('crises.road', function publishRoad(){
         resolved: false
     });
 });
+
+Meteor.publish('crises.gasLeak', function publishRoad(){
+    return Crises.find({
+        type: 'gasLeak'
+    }, {
+        resolved: false
+    });
+});

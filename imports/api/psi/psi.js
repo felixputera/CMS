@@ -10,12 +10,12 @@ Psi.deny({
 });
 
 Psi.schema = new SimpleSchema({
-  time: { type: Date },
-	north: { type: Number },
-  central: { type: Number },
-	east: { type: Number },
-	west: { type: Number },
-	south: { type: Number },
+    time: { type: Date },
+    north: { type: Number },
+    central: { type: Number },
+    east: { type: Number },
+    west: { type: Number },
+    south: { type: Number },
 });
 
 Psi.attachSchema(Psi.schema);

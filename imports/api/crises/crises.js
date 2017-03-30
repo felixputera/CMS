@@ -15,13 +15,15 @@ Crises.schema = new SimpleSchema({
     hour: { type: Number },
     region: { type: String },
     address: { type: String },
-    postalCode: { type: Number, optional: true },
+    postalCode: { type: String, optional: true },
+    unitNumber: { type: String, optional: true },
     latitude: { type: Number, decimal: true },
     longitude: { type: Number, decimal: true },
     type: { type: String },
     description: { type: String },
     userId: { type: String, regEx: SimpleSchema.RegEx.Id, optional: true },
     assistance: { type: Boolean },
+    assistanceType: { type: String, optional: true },
     resolved: { type: Boolean },
 });
 

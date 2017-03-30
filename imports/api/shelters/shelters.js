@@ -10,14 +10,14 @@ Shelters.deny({
 });
 
 Shelters.schema = new SimpleSchema({
-  _id: { type: String, regEx: SimpleSchema.RegEx.Id },
-  name: { type: String },
-	type: { type: String },
-	address: { type: String },
-	postalCode: { type: String },
-	latitude: { type: Number, decimal: true },
-  longitude: { type: Number, decimal: true },
-	region: { type: String }
+    _id: { type: String, regEx: SimpleSchema.RegEx.Id },
+    name: { type: String },
+    type: { type: String },
+    address: { type: String },
+    postalCode: { type: String },
+    latitude: { type: Number, decimal: true },
+    longitude: { type: Number, decimal: true },
+    region: { type: String }
 });
 
 Shelters.attachSchema(Shelters.schema);

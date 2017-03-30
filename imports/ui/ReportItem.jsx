@@ -31,9 +31,8 @@ export const ReportItem = SortableElement (({value, checked, info, toggleCheck }
                 label={value}
                 labelPosition="right"
                 defaultChecked={checked}
-                style={{marginBottom: 16}}
                 onCheck={toggleCheck}
-                style={{width:'180px'}}
+                style={{width:'180px', marginBottom: 16}}
                 />
                 <DragHandle />
                 <div className="report-info">
@@ -44,4 +43,4 @@ export const ReportItem = SortableElement (({value, checked, info, toggleCheck }
                     </Card>
                 </div>
             </li>
-            )
+            );

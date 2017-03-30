@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import classnames from 'classnames';
+import FontIcon from 'material-ui/FontIcon';
+import IconButton from 'material-ui/IconButton';
 // import RequestForm from '../imports/ui/RequestForm.jsx';
 
 export default class RequestItem extends Component{
@@ -16,14 +18,16 @@ export default class RequestItem extends Component{
     render(){
         return (
         	//can add Image
-            <li className="request">
+            <li className="request-item">
                 <span className="type">
   					{this.props.type}
         		</span>
             	<span className="name">
   					{this.props.name}
         		</span>
-        		<button className="delete" onClick={this.deleteThisRequest.bind(this)}>Delete</button>
+                <IconButton onClick={this.deleteThisRequest.bind(this)}>
+                    <FontIcon className="material-icons">clear</FontIcon>
+                </IconButton>
             </li>
         );
     }

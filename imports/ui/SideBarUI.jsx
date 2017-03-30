@@ -4,6 +4,10 @@ import Sidebar from 'react-sidebar'
 import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 import { Template } from 'meteor/templating';
 import { Blaze } from 'meteor/blaze';
 
@@ -61,7 +65,9 @@ class SideBarUI extends Component {
                 <Reports order={this.state.order} onOrderChanged={this.handleChange.bind(this)}/>
                 {/*{ Meteor.userId() in adminWololo?
                 }*/}
-                <Requests requestlist={this.props.mapMarkers.Requests}/>
+                <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                    <Requests requestlist={this.props.mapMarkers.Requests}/>
+                </MuiThemeProvider>
             </div>
         )
     }

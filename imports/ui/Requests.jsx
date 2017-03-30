@@ -1,10 +1,17 @@
 import React, { Component, PropTypes } from 'react';
+import FontIcon from 'material-ui/FontIcon';
+import IconButton from 'material-ui/IconButton';
 
 import RequestItem from './RequestItem.jsx';
 import RequestForm from './RequestForm.jsx';
 
 export default class Requests extends Component{
-
+    constructor(props){
+        super(props);
+        this.state = {
+            hideForm: true,
+        }
+    }
     requestItemDisplay(){
         if(this.props.requestlist){
             return(
@@ -25,13 +32,25 @@ export default class Requests extends Component{
         } else return;
     }
 
+    hideShowForm(event){
+        this.setState({
+            hideForm: !this.state.hideForm,
+        })
+    }
+
     render(){
         return (
             <div className="requests">
                 <ul>
                 {this.requestItemDisplay()}
                 </ul>
-                <RequestForm />
+                {this.state.hideForm ? null : <RequestForm/>}
+                <span className="add-request">
+                    <IconButton onClick={this.hideShowForm.bind(this)}>
+                        {this.state.hideForm ? <FontIcon className="material-icons md-36">add circle</FontIcon> :
+                        <FontIcon className="material-icons md-36">delete</FontIcon>}
+                    </IconButton>
+                </span>
             </div>
         );
     }

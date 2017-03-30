@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import {SortableElement, SortableHandle} from 'react-sortable-hoc';
 import Checkbox from 'material-ui/Checkbox';
+import FontIcon from 'material-ui/FontIcon';
 
-const DragHandle = SortableHandle(() => <span className="drag-handle">::</span>);
+const DragHandle = SortableHandle(() => <FontIcon className="drag-handle material-icons">reorder</FontIcon>);
 
 /*export default class ReportItem extends SortableElement {
 

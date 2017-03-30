@@ -2,6 +2,9 @@
 import React, {Component, PropTypes} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 import SideBarUI from './SideBarUI.jsx';
 import LoginUI from './LoginUI.jsx';

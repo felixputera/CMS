@@ -40,8 +40,14 @@ export default class MapUI extends Component {
         // }
         return orderedMarkers.Shelters.map((marker) => {
             return this.props.order.map((value, index) => {
-                if(value == "Shelters"){
-                    let zIndex = classnames("shelters", 'index' + index);
+                if(value.name == "Shelters"){
+                    let zIndex;
+                    if(!value.hide){
+                        zIndex = classnames("shelters", 'index' + index);
+                    }
+                    else {
+                        zIndex = classnames("shelters", 'index' + index, 'hiddenMarkers')
+                    }
                     return (
                         <AnyReactComponent
                         key={marker._id}
@@ -60,8 +66,14 @@ export default class MapUI extends Component {
 
         return orderedMarkers.Crises.map((marker) => {
             return this.props.order.map((value, index) => {
-                if(value.toLowerCase() == marker.type){
-                    let zIndex = classnames(marker.type, 'index' + index);
+                if(value.name.toLowerCase() == marker.type){
+                    let zIndex;
+                    if(!value.hide){
+                        zIndex = classnames(marker.type, 'index' + index);
+                    }
+                    else {
+                        zIndex = classnames(marker.type, 'index' + index, 'hiddenMarkers')
+                    }
                     return (
                     <AnyReactComponent
                     key={marker._id}

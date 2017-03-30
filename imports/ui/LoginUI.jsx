@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Template } from 'meteor/templating';
 import { Blaze } from 'meteor/blaze';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
  
-export default class AccountsUIWrapper extends Component {
+export default class LoginUI extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      loginOpen: false,
+    }
+  }
+
   componentDidMount() {
     // Use Meteor Blaze to render login buttons
     this.view = Blaze.render(Template.loginButtons,

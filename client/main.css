@@ -110,6 +110,7 @@ header>h2{
 
 .marker:hover {
   z-index:102;
+  text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 10px;
 }
 
 .marker>.marker-info {

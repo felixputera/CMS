@@ -28,7 +28,7 @@ export default class MapMarker extends Component {
         return(
             <div className={this.props.kelas}>
                 <FontIcon className="material-icons md-48" color={iconColor[this.props.type]} hoverColor={hoverColor[this.props.type]}>{mapIcon[this.props.type]}</FontIcon>
-                <div className="marker-info" style={{backgroundColor:hoverColor[this.props.type]}}>
+                <div className="marker-info" style={{backgroundColor:"#FAFAFA"}}>
                     {this.props.address}
                     {/*<Card style={{backgroundColor:iconColor[this.props.type]}}>
                         <CardHeader title={this.props.address} subtitle={this.props.region}/>

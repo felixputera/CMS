@@ -26,7 +26,7 @@ export default class RequestItem extends Component{
   					{this.props.name}
         		</span>
                 <IconButton onClick={this.deleteThisRequest.bind(this)}>
-                    <FontIcon className="material-icons">clear</FontIcon>
+                    <FontIcon className="material-icons md-18">clear</FontIcon>
                 </IconButton>
             </li>
         );

@@ -20,7 +20,7 @@ import { ReportItem } from './ReportItem.jsx';
     }
 }*/
 
-export const ReportList = SortableContainer (({items, updateState})=>
+export const ReportList = SortableContainer (({items, info, updateState})=>
             <ul>
             {items.map((value, index) => (
                 <ReportItem
@@ -28,6 +28,7 @@ export const ReportList = SortableContainer (({items, updateState})=>
                 index={index}
                 value={value.name}
                 checked={!value.hide}
+                info={info[value.name]}
                 toggleCheck={updateState}/>
             ))}
             </ul>

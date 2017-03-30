@@ -47,8 +47,8 @@ export default class Requests extends Component{
                 {this.state.hideForm ? null : <RequestForm/>}
                 <span className="add-request">
                     <IconButton onClick={this.hideShowForm.bind(this)}>
-                        {this.state.hideForm ? <FontIcon className="material-icons md-36">add circle</FontIcon> :
-                        <FontIcon className="material-icons md-36">delete</FontIcon>}
+                        {this.state.hideForm ? <FontIcon className="material-icons md-24">add</FontIcon> :
+                        <FontIcon className="material-icons md-24">delete</FontIcon>}
                     </IconButton>
                 </span>
             </div>

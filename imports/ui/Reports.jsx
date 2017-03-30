@@ -50,6 +50,7 @@ export default class Reports extends Component{
             <ReportList className="reports"
             helperClass="dragging"
             items={this.state.order}
+            info={this.props.info}
             onSortEnd={this.onSortEnd.bind(this)} 
             useDragHandle={true}
             lockAxis='y'

@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import {SortableElement, SortableHandle} from 'react-sortable-hoc';
 import Checkbox from 'material-ui/Checkbox';
 import FontIcon from 'material-ui/FontIcon';
+import classnames from 'classnames';
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 
 const DragHandle = SortableHandle(() => <FontIcon className="drag-handle material-icons">reorder</FontIcon>);
 
@@ -23,13 +25,8 @@ const DragHandle = SortableHandle(() => <FontIcon className="drag-handle materia
     }
 }*/
 
-export const ReportItem = SortableElement (({value, checked, toggleCheck }) => 
-            <li className="report-item">
-                {/*<input
-                type="checkbox"
-                defaultChecked={checked}
-                onChange={toggleCheck(value, !checked)}
-                />*/}
+export const ReportItem = SortableElement (({value, checked, info, toggleCheck }) => 
+            <li className={classnames("report-item", "report-item-" + value)}>
                 <Checkbox
                 label={value}
                 labelPosition="right"
@@ -39,5 +36,12 @@ export const ReportItem = SortableElement (({value, checked, toggleCheck }) =>
                 style={{width:'180px'}}
                 />
                 <DragHandle />
+                <div className="report-info">
+                    <Card>
+                        <CardHeader
+                        title={value}
+                        subtitle={info}/>
+                    </Card>
+                </div>
             </li>
             )

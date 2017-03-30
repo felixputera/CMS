@@ -95,7 +95,7 @@ header>h2{
 }
 
 .road {
-  background-color: #3cba54;
+  background-color: #FF9800;
   min-width: 40px;
   height:40px;
   padding:3px;
@@ -145,6 +145,28 @@ li {
 li.report-item{
   background-color: #fcfcfc;
   color: #303030;
+}
+
+li.report-item-Shelters{
+  border-left:5px solid #f4c20d;
+}
+li.report-item-Fire{
+  border-left:5px solid #db3236;
+}
+li.report-item-Flood{
+  border-left:5px solid #4885ed;
+}
+li.report-item-Road{
+  border-left:5px solid #FF9800;
+}
+
+li.report-item>.report-info{
+  display: none;
+}
+li.report-item:hover>.report-info{
+  display: block;
+  position: absolute;
+  left:250px;
 }
 
 li.request-item{
@@ -228,13 +250,13 @@ ul {
 
 .request-form-input {
   padding:15px;
-  padding-top:5px;
+  padding-top:10px;
 }
 
 .add-request {
   position: absolute;
-  right:5px;
-  bottom:5px;
+  right:0;
+  bottom:0;
 }
 
 .request-form-actions{
@@ -244,10 +266,11 @@ ul {
   padding-right:0 !important;
 }
 
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-12 { font-size: 12px !important; }
+.material-icons.md-18 { font-size: 18px !important; }
+.material-icons.md-24 { font-size: 24px !important; }
+.material-icons.md-36 { font-size: 36px !important; }
+.material-icons.md-48 { font-size: 48px !important; }
 
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }

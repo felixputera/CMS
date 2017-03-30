@@ -2,7 +2,6 @@
 import React, {Component, PropTypes} from 'react';
 import Sidebar from 'react-sidebar'
 import ReactDOM from 'react-dom';
-import { createContainer } from 'meteor/react-meteor-data';
 
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -15,20 +14,15 @@ import MapUI from './MapUI.jsx';
 import Reports from './Reports.jsx';
 import Requests from './Requests.jsx';
 
-import { Shelters } from '../api/shelters/shelters.js';
-import { Crises } from '../api/crises/crises.js';
-import { RequestsAss } from '../api/requests/requests.js';
-
 class SideBarUI extends Component {
     
     constructor(props) {
         super(props);
-
         this.state = {
             // mainMap: <MapUI order={['Shelters','Crises']} />,
-            order: [{'name':'Shelters','hide':false,},
-                    {'name':'Fire','hide':false,},
-                    {'name':'Flood','hide':false,},
+            order: [{'name':'Shelters','hide':false},
+                    {'name':'Fire','hide':false},
+                    {'name':'Flood','hide':false},
                     {'name':'Road','hide':false}],
         }
 
@@ -62,7 +56,7 @@ class SideBarUI extends Component {
     sidebarContent() {
         return (
             <div className="side-bar-content">
-                <Reports order={this.state.order} onOrderChanged={this.handleChange.bind(this)}/>
+                <Reports order={this.state.order} info={this.props.reportInfo} onOrderChanged={this.handleChange.bind(this)}/>
                 {/*{ Meteor.userId() in adminWololo?
                 }*/}
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
@@ -112,21 +106,4 @@ SideBarUI.propTypes = {
     mapMarkers: React.PropTypes.object.isRequired,
 }
 
-export default createContainer(() => {
-    Meteor.subscribe('shelters');
-    Meteor.subscribe('crises.fire');
-    Meteor.subscribe('crises.flood');
-    Meteor.subscribe('crises.road');
-    Meteor.subscribe('requests');
-    return{
-        mapMarkers:{
-            "Shelters": Shelters.find().fetch().slice(0,30),
-            "Crises": Crises.find().fetch(),
-            "Requests": RequestsAss.find().fetch(),
-        },
-    };
-}, SideBarUI)
-
-// SideBarUI.propTypes = {
-//     mainMap: PropTypes.object.isRequired,
-// }
+export default SideBarUI;

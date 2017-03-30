@@ -25,10 +25,12 @@ export default class Requests extends Component{
                     key={request._id}
                     taianjing={request._id}
                     type={request.type}
-                    name={request.name}
-                    number={request.number}
+                    assType={request.assistanceType}
+                    desc={request.description}
+                    name={request.userId}
+                    number={request.unitNumber}
                     address={request.address}
-                    date={request.createdAt}
+                    date={request.time}
                     />
                 )
             }))
@@ -50,7 +52,7 @@ export default class Requests extends Component{
                 <List style={{marginTop:40}}>
                     {this.requestItemDisplay()}
                     <Divider/>
-                    <div style={{height:60}}/>
+                    <div style={{height:50}}/>
                 </List>
                 {this.state.hideForm ? null : <RequestForm/>}
                 <span className="add-request">

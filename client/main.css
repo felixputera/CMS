@@ -71,6 +71,7 @@ header>h2{
   height:40px;
   padding:3px;
   overflow: hidden;
+  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
 }
 
@@ -173,6 +174,7 @@ li.report-item:hover>.report-info{
   display: block;
   position: absolute;
   left:250px;
+  min-width:190px;
 }
 
 /*li.request-item{
@@ -184,7 +186,7 @@ li.report-item:hover>.report-info{
   flex:1;
   float:right;
   opacity: 0;
-  transition: 100ms all ease-in;
+  transition: 100ms all ease-in-out;
 }
 
 li:hover>.drag-handle{
@@ -195,6 +197,17 @@ li:hover>.drag-handle{
   cursor: row-resize;
   z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.14902) 0px 2px 5px
+}
+
+.delete {
+  opacity: 0;
+  height: 10px;
+  margin: auto;
+  transition: 0.1s all ease-in-out;
+}
+
+.requests>div:nth-child(2)>div:hover .delete {
+  opacity: 1;
 }
 
 ul {

@@ -8,6 +8,7 @@ import IconButton from 'material-ui/IconButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
+import Toggle from 'material-ui/Toggle';
 
 const style = {
   textField:{
@@ -17,9 +18,15 @@ const style = {
     marginRight:0,
     marginLeft:5,
   },
-  dropDown:{
+  dropDownType:{
     paddingBottom:12,
     width:176,
+  },
+  dropDownAssType:{
+    width:255,
+    paddingLeft:0,
+    marginLeft:0,
+    marginTop:10,
   }
 }
 
@@ -28,11 +35,17 @@ export default class RequestForm extends Component {
     super(props);
     this.state = {
       type: null,
-      caller: '',
-      number: '',
+      assistanceType: null,
       address: '',
+      region:'',
+      description:'',
+      postalCode:'',
+      unitNumber:'',
+      assistance: false,
+
       minimise: false,
     };
+
     this.baseState = this.state;
     
     // this.handleInputChange = this.handleInputChange.bind(this);
@@ -49,9 +62,21 @@ export default class RequestForm extends Component {
     });
   }
 
-  handleDropDownChange(event, index, value){
+  handleTypeChange(event, index, value){
     this.setState({
       type: value,
+    })
+  }
+
+  handleAssTypeChange(event, index, value){
+    this.setState({
+      assistanceType: value,
+    })
+  }
+
+  handleAssChange(event, bool){
+    this.setState({
+      assistance: !this.state.assistance,
     })
   }
 
@@ -64,15 +89,20 @@ export default class RequestForm extends Component {
     // const address = ReactDOM.findDOMNode(this.refs.address).value.trim();
 
     const type = this.state.type;
-    const caller = this.state.caller;
-    const number = this.state.number;
+    const assistanceType = this.state.assistanceType;
     const address = this.state.address;
+    const region = this.state.region;
+    const description = this.state.description;
+    const postalCode = this.state.postalCode;
+    const unitNumber = this.state.unitNumber;
+    const assistance = this.state.assistance;
 
-    if (!type || !caller || !number || !address) {
+    if (!type || !address || !region || !description || (assistance && !assistanceType)) {
         return;
     }
 
-    Meteor.call('requests.insert',type,caller,number,address);
+    Meteor.call('crises.insert', region, address, type, description,
+    assistance, assistanceType, postalCode, unitNumber);
 
     this.handleReset(null);
 
@@ -96,25 +126,13 @@ export default class RequestForm extends Component {
   render() {
     return (
       <Card className="request-form">
-        {/*<AppBar
-          title={
-            <span>NEW
-            <DropDownMenu value={this.state.type} ref="type" name="type" onChange={this.handleInputChange} autoWidth={false} style={{width:150}}>
-              <MenuItem value="ambulance" primaryText="Emergency Ambulance" />
-              <MenuItem value="gasControl" primaryText="Gas Leak Control" />
-            </DropDownMenu>
-            </span>
-            }
-          onTitleTouchTap={this.minimise.bind(this)}
-          iconElementLeft={null}
-          iconElementRight={<IconButton touch={true} onTouchTap={this.props.toggleHide}><FontIcon className="material-icons">delete</FontIcon></IconButton>}
-        />*/}
         <div className="request-form-head">
         <span>NEW</span>
-        <DropDownMenu value={this.state.type} name="type" style={style.dropDown} onChange={this.handleDropDownChange.bind(this)} autoWidth={false}>
+        <DropDownMenu value={this.state.type} name="type" style={style.dropDownType} onChange={this.handleTypeChange.bind(this)} autoWidth={false}>
           <MenuItem value={null} primaryText="Request Type" disabled={true}/>
-          <MenuItem value="ambulance" primaryText="Emergency Ambulance" />
-          <MenuItem value="gasControl" primaryText="Gas Leak Control" />
+          <MenuItem value="fire" primaryText="Fire" />
+          <MenuItem value="flood" primaryText="Flood" />
+          <MenuItem value="road" primaryText="Road Accident" />
         </DropDownMenu>
         <IconButton onClick={this.minimise.bind(this)}>
           <FontIcon className="material-icons">tab</FontIcon>
@@ -123,19 +141,31 @@ export default class RequestForm extends Component {
         {
           this.state.minimise ? null :
           <div className="request-form-input">
+            <Toggle
+              label="Assistance needed"
+              defaultToggled={this.state.assistance}
+              onToggle={this.handleAssChange.bind(this)}
+            />
+            <DropDownMenu value={this.state.assistanceType} name="type" style={style.dropDownAssType} 
+            onChange={this.handleAssTypeChange.bind(this)} autoWidth={false} disabled={!this.state.assistance}>
+              <MenuItem value={null} primaryText="Assistance Type" disabled={true}/>
+              <MenuItem value="ambulance" primaryText="Emergency Ambulance" />
+              <MenuItem value="gasControl" primaryText="Gas Leak Control" />
+            </DropDownMenu>
             <TextField
-              hintText="Name"
-              name="caller"
-              errorText={this.state.caller? null : "This field is required"}
-              value={this.state.caller}
+              hintText="Description"
+              name="description"
+              errorText={this.state.description? null : "This field is required"}
+              value={this.state.description}
+              multiLine={true}
               onChange={this.handleInputChange.bind(this)}
               style={style.textField}/>
             <br />
             <TextField
-              hintText="Mobile Number"
-              name="number"
-              errorText={this.state.number? null : "This field is required"}
-              value={this.state.number}
+              hintText="Region"
+              name="region"
+              errorText={this.state.region? null : "This field is required"}
+              value={this.state.region}
               onChange={this.handleInputChange.bind(this)}
               style={style.textField}/>
             <br />
@@ -148,6 +178,17 @@ export default class RequestForm extends Component {
               onChange={this.handleInputChange.bind(this)}
               style={style.textField}/>
             <br />
+            <TextField
+              hintText="Postal code"
+              name="postalCode"
+              value={this.state.postalCode}
+              onChange={this.handleInputChange.bind(this)}/>
+            <TextField
+              hintText="House unit number"
+              name="unitNumber"
+              value={this.state.unitNumber}
+              onChange={this.handleInputChange.bind(this)}/>
+            <br />
             <CardActions className="request-form-actions">
               <IconButton
               onTouchTap={this.handleReset.bind(this)}
@@ -159,7 +200,9 @@ export default class RequestForm extends Component {
               <IconButton
               onTouchTap={this.handleSubmit.bind(this)}
               style={style.actionButton}
-              tooltip={(this.state.number && this.state.address && this.state.type && this.state.number) ? null : "All field is required"}
+              tooltip={(this.state.type && this.state.address && this.state.region &&
+              this.state.description && (this.state.assistance &&
+              !this.state.assistanceType)) ? null : "Some fields are required"}
               tooltipPosition="top-center">
                 <FontIcon className="material-icons md-24">done</FontIcon>  
               </IconButton>

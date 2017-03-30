@@ -23,21 +23,23 @@ export default class RequestItem extends Component{
     }
 
 	deleteThisRequest() {
-    	Meteor.call('requests.remove', this.props.taianjing);
+    	Meteor.call('crises.remove', this.props.taianjing);
         // console.log(this.props.key);
     }
 
     render(){
         return (
         	//can add Image
-            <ListItem className="request-item"
-            leftAvatar={<FontIcon className="material-icons md-36 md-light md-inactive">{requestTypeIcon[this.props.type]}</FontIcon>}
+            <ListItem
+            leftAvatar={<FontIcon className="material-icons md-36 md-light md-inactive">{requestTypeIcon[this.props.assType]}</FontIcon>}
             rightIcon={
-                <IconButton onClick={this.deleteThisRequest.bind(this)}>
-                    <FontIcon className="material-icons md-18">clear</FontIcon>
-                </IconButton>}
+                <span className="delete">
+                    <IconButton onClick={this.deleteThisRequest.bind(this)}>
+                        <FontIcon className="material-icons md-18">clear</FontIcon>
+                    </IconButton>
+                </span>}
             primaryText={this.props.address}
-            secondaryText={requestTypeDisplay[this.props.type]}
+            secondaryText={requestTypeDisplay[this.props.assType]}
             />
         );
     }
@@ -45,5 +47,4 @@ export default class RequestItem extends Component{
 
 RequestItem.propTypes = {
     type: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
 };

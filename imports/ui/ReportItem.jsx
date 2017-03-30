@@ -39,7 +39,7 @@ export const ReportItem = SortableElement (({value, checked, info, toggleCheck }
                     <Card>
                         <CardHeader
                         title={value}
-                        subtitle={info}/>
+                        subtitle={"Total: "+info}/>
                     </Card>
                 </div>
             </li>

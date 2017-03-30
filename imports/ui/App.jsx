@@ -12,7 +12,6 @@ import LoginUI from './LoginUI.jsx';
 
 import { Shelters } from '../api/shelters/shelters.js';
 import { Crises } from '../api/crises/crises.js';
-import { RequestsAss } from '../api/requests/requests.js';
 
 class App extends Component {
     constructor(props){
@@ -39,12 +38,11 @@ export default createContainer(() => {
     Meteor.subscribe('crises.fire');
     Meteor.subscribe('crises.flood');
     Meteor.subscribe('crises.road');
-    Meteor.subscribe('requests');
     return{
         mapMarkers:{
             "Shelters": Shelters.find().fetch().slice(0,30),
             "Crises": Crises.find().fetch(),
-            "Requests": RequestsAss.find().fetch(),
+            "Requests": Crises.find({ assistance: true }).fetch(),
         },
         reportInfo:{
             "Shelters": Shelters.find().count(),

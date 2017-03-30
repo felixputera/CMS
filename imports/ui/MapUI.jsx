@@ -1,14 +1,10 @@
 // import { Meteor } from 'meteor/meteor';
 import React, {Component, PropTypes} from 'react';
-import GoogleMapReact, { Marker } from 'google-map-react';
+import GoogleMapReact from 'google-map-react';
 import { createContainer } from 'meteor/react-meteor-data';
 import classnames from 'classnames';
 
-import SideBar from './SideBarUI.jsx';
-// import { googleMapsClient } from '../utils/maps-client.js'
-
-const AnyReactComponent = ({ text, kelas }) => <div className={kelas}>{text}</div>;
-// import { googleMapsClient } from '../utils/maps-client.js'
+import MapMarker from './MapMarker.jsx';
 
 export default class MapUI extends Component {
     constructor(props){
@@ -23,7 +19,7 @@ export default class MapUI extends Component {
         this.state.order.forEach(category => {
             filtered.unshift(this.props.markers[category].map((marker) => {
                 return (
-                    <AnyReactComponent
+                    <MapMarker
                     key={marker._id}
                     lat={marker.latitude}
                     lng={marker.longitude}
@@ -43,18 +39,25 @@ export default class MapUI extends Component {
                 if(value.name == "Shelters"){
                     let zIndex;
                     if(!value.hide){
-                        zIndex = classnames("shelters", 'index' + index);
+                        zIndex = classnames("marker", "shelters", 'index' + index);
                     }
                     else {
-                        zIndex = classnames("shelters", 'index' + index, 'hiddenMarkers')
+                        zIndex = classnames("marker", "shelters", 'index' + index, 'hiddenMarkers')
                     }
                     return (
-                        <AnyReactComponent
+                        <MapMarker
                         key={marker._id}
                         lat={marker.latitude}
                         lng={marker.longitude}
-                        text={marker.name}
+                        name={marker.name}
+                        type={"shelters"}
+                        address={marker.address}
+                        postalCode={marker.postalCode}
+                        region={marker.region}
                         kelas={zIndex}
+                        hour={null}
+                        unitNumber={marker.type}
+                        desc={null}
                         />
                     );}
                 });
@@ -69,18 +72,25 @@ export default class MapUI extends Component {
                 if(value.name.toLowerCase() == marker.type){
                     let zIndex;
                     if(!value.hide){
-                        zIndex = classnames(marker.type, 'index' + index);
+                        zIndex = classnames("marker", marker.type, 'index' + index);
                     }
                     else {
-                        zIndex = classnames(marker.type, 'index' + index, 'hiddenMarkers')
+                        zIndex = classnames("marker", marker.type, 'index' + index, 'hiddenMarkers')
                     }
                     return (
-                    <AnyReactComponent
+                    <MapMarker
                     key={marker._id}
                     lat={marker.latitude}
                     lng={marker.longitude}
-                    text={marker.name}
+                    name={marker.assistanceType}
+                    type={marker.type}
+                    address={marker.address}
+                    postalCode={marker.postalCode}
+                    region={marker.region}
                     kelas={zIndex}
+                    hour={marker.hour}
+                    unitNumber={marker.unitNumber}
+                    desc={marker.description}
                     />
                     );
                 }

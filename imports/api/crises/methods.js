@@ -7,9 +7,9 @@ import { Crises } from './crises.js';
 
 Meteor.methods({
     'crises.insert'(region, address, type, description, assistance, assistanceType, postalCode, unitNumber) {
-        if (!this.userId) {
-            throw new Meteor.Error('not-authorized');
-        }
+        // if (!this.userId) {
+        //     throw new Meteor.Error('not-authorized');
+        // }
         const coordinates = generateCoordinates(address);
         let d = new Date();
         Crises.insert({
@@ -31,9 +31,9 @@ Meteor.methods({
         sendAlert(region, address, type, description);
     },
     'crises.setResolved'(crisisId){
-        if (!this.userId) {
-            throw new Meteor.Error('not-authorized');
-        }
+        // if (!this.userId) {
+        //     throw new Meteor.Error('not-authorized');
+        // }
         Crises.update(crisisId, {
             $set:{
                 resolved: true,

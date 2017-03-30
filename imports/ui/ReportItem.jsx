@@ -5,7 +5,7 @@ import FontIcon from 'material-ui/FontIcon';
 import classnames from 'classnames';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 
-const DragHandle = SortableHandle(() => <FontIcon className="drag-handle material-icons">reorder</FontIcon>);
+const DragHandle = SortableHandle(() => <FontIcon className="drag-handle material-icons">drag_handle</FontIcon>);
 
 /*export default class ReportItem extends SortableElement {
 
@@ -32,7 +32,7 @@ export const ReportItem = SortableElement (({value, checked, info, toggleCheck }
                 labelPosition="right"
                 defaultChecked={checked}
                 onCheck={toggleCheck}
-                style={{width:'180px', marginBottom: 16}}
+                style={{width:'180px'}}
                 />
                 <DragHandle />
                 <div className="report-info">

@@ -42,7 +42,7 @@ export default createContainer(() => {
         mapMarkers:{
             "Shelters": Shelters.find().fetch().slice(0,30),
             "Crises": Crises.find().fetch(),
-            "Requests": Crises.find({ assistance: true }).fetch(),
+            "Requests": Crises.find({ assistance: true, resolved: false }).fetch(),
         },
         reportInfo:{
             "Shelters": Shelters.find().count(),

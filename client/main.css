@@ -71,7 +71,6 @@ header>h2{
   height:40px;
   padding:3px;
   overflow: hidden;
-  border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
 }
 
@@ -283,8 +282,8 @@ ul {
 .material-icons.md-36 { font-size: 36px !important; }
 .material-icons.md-48 { font-size: 48px !important; }
 
-.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
-.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54) !important; }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26) !important; }
 
-.material-icons.md-light { color: rgba(255, 255, 255, 1); }
-.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+.material-icons.md-light { color: rgba(255, 255, 255, 1) !important; }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3) !important; }

@@ -12,6 +12,11 @@ const requestTypeDisplay = {
     "gasControl":"Gas Leak Control",
 }
 
+const requestTypeIcon = {
+    "ambulance":"local_hospital",
+    'gasControl':"cloud"
+}
+
 export default class RequestItem extends Component{
     constructor(props) {
         super(props);
@@ -26,13 +31,13 @@ export default class RequestItem extends Component{
         return (
         	//can add Image
             <ListItem className="request-item"
-            leftAvatar={null}
+            leftAvatar={<FontIcon className="material-icons md-36 md-light md-inactive">{requestTypeIcon[this.props.type]}</FontIcon>}
             rightIcon={
                 <IconButton onClick={this.deleteThisRequest.bind(this)}>
                     <FontIcon className="material-icons md-18">clear</FontIcon>
                 </IconButton>}
-            primaryText={requestTypeDisplay[this.props.type]}
-            secondaryText={this.props.name}
+            primaryText={this.props.address}
+            secondaryText={requestTypeDisplay[this.props.type]}
             />
         );
     }

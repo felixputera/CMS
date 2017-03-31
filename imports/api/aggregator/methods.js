@@ -31,7 +31,7 @@ Meteor.methods({
         textOutput = textOutput + printPsi();
         textOutput = textOutput + '\n Unresolved Accidents \n';
 
-        let unresolvedCrises = Crises.find({resolved: false}, {sort: {region: 1}});
+        let unresolvedCrises = Crises.find({resolved: false}, {sort: {region: 1}}).fetch();
         _.each(unresolvedCrises, (crisis) => {
             if (crisis) {
                 textOutput = textOutput + printSingleCrisis(crisis);
@@ -47,7 +47,7 @@ Meteor.methods({
         textOutput = textOutput + '\n Accidents Happened Last Hour \n';
 
         let now = new Date;
-        let pastHourCrises = Crises.find({hour: now.getHours()}, {sort: {region: 1}});
+        let pastHourCrises = Crises.find({hour: now.getHours()}, {sort: {region: 1}}).fetch();
         _.each(pastHourCrises, (crisis) => {
             if(crisis) {
                 textOutput = textOutput + printSingleCrisis(crisis);

@@ -39,6 +39,5 @@ SyncedCron.add({
 
 Meteor.startup(() => {
     Meteor.call('psi.fetch');
-    sendEmail("pentium.pm@mail.com", Meteor.call('pmReport'));
     SyncedCron.start();
 });

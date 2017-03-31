@@ -20,7 +20,7 @@ const printPsi = () => {
 const printSingleCrisis = (crisis) => {
   let textOutput;
   textOutput = 'Type: ' + crisis.type + ', Region: ' + crisis.region +
-      ', Address: ' + crisis.address + ', Reported time: ' + crisis.time.toDateString();
+      ', Address: ' + crisis.address + ', Reported time: ' + crisis.time;
   return textOutput;
 };
 
@@ -33,7 +33,9 @@ Meteor.methods({
 
         let unresolvedCrises = Crises.find({resolved: false}, {sort: {region: 1}});
         _.each(unresolvedCrises, (crisis) => {
-            textOutput = textOutput + printSingleCrisis(crisis);
+            if (crisis) {
+                textOutput = textOutput + printSingleCrisis(crisis);
+            }
         });
 
         return textOutput;
@@ -47,7 +49,9 @@ Meteor.methods({
         let now = new Date;
         let pastHourCrises = Crises.find({hour: now.getHours()}, {sort: {region: 1}});
         _.each(pastHourCrises, (crisis) => {
-            textOutput = textOutput + printSingleCrisis(crisis);
+            if(crisis) {
+                textOutput = textOutput + printSingleCrisis(crisis);
+            }
         });
 
         return textOutput;

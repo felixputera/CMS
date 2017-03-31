@@ -4,32 +4,28 @@ import { Crises } from '../crises.js'
 
 Meteor.publish('crises.fire', function publishFire(){
     return Crises.find({
-        type: 'fire'
-    }, {
+        type: 'fire',
         resolved: false
     });
 });
 
 Meteor.publish('crises.flood', function publishFlood(){
     return Crises.find({
-        type: 'flood'
-    }, {
+        type: 'flood',
         resolved: false
     });
 });
 
 Meteor.publish('crises.road', function publishRoad(){
     return Crises.find({
-        type: 'road'
-    }, {
+        type: 'road',
         resolved: false
     });
 });
 
-Meteor.publish('crises.gasLeak', function publishRoad(){
+Meteor.publish('crises.gasLeak', function publishGas(){
     return Crises.find({
-        type: 'gasLeak'
-    }, {
+        type: 'gasLeak',
         resolved: false
     });
 });

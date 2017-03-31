@@ -23,8 +23,6 @@ export const sendEmail = (recipient, text) => {
     let to = recipient /*"pentium.pm@mail.com"*/;
     let subject = "Half-hourly Update from CMS";
 
-    this.unblock();
-
     Email.send({
         to: to,
         from: from,

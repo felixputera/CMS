@@ -60,9 +60,13 @@ header {
   box-shadow: rgba(0, 0, 0, 0.14902) 0px 5px 8px;
   z-index: 1001;
 }
-header>h2{
+header>h2>a{
   color: white;
   font-weight: 100;
+}
+
+a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
 }
 
 /*.shelters {
@@ -246,26 +250,18 @@ ul {
   margin:0;
 }
 
-#login-buttons {
+.login-button {
   display: block;
   position: fixed;
   z-index: 1002;
   right: 15px;
-  top:20px;
+  top: 12px;
 }
 
-#login-signin-link.login-link-text:link {
-  float:right;
-  /*text-decoration: none !important;*/
-}
-
-#login-dropdown-list {
-  left:unset;
-  right:5px;
-}
-
-#login-buttons .login-close-text{
-  float:right;
+.login-page {
+  padding-top: 70px;
+  margin-right: 80px;
+  margin-left: 80px;
 }
 
 .request-form {

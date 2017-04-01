@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import {SortableElement, SortableHandle} from 'react-sortable-hoc';
 import Checkbox from 'material-ui/Checkbox';
 import FontIcon from 'material-ui/FontIcon';
 import classnames from 'classnames';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import { Card, CardHeader } from 'material-ui/Card';
 
 const DragHandle = SortableHandle(() => <FontIcon className="drag-handle material-icons">drag_handle</FontIcon>);
 

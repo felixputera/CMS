@@ -1,11 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
-import classnames from 'classnames';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
 import {ListItem} from 'material-ui/List';
 
-// import RequestForm from '../imports/ui/RequestForm.jsx';
 
 const requestTypeDisplay = {
     "ambulance":"Emergency Ambulance",

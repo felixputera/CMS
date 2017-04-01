@@ -1,18 +1,19 @@
-// import { Meteor } from 'meteor/meteor';
 import React, {Component, PropTypes} from 'react';
-import Sidebar from 'react-sidebar'
-import ReactDOM from 'react-dom';
+import Sidebar from 'react-sidebar';
+import { Meteor } from 'meteor/meteor';
+import { createContainer } from 'meteor/react-meteor-data';
 
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import { Template } from 'meteor/templating';
-import { Blaze } from 'meteor/blaze';
-
 import MapUI from './MapUI.jsx';
 import Reports from './Reports.jsx';
 import Requests from './Requests.jsx';
+
+import { Shelters } from '../api/shelters/shelters.js';
+import { Crises } from '../api/crises/crises.js';
+
 
 class SideBarUI extends Component {
     
@@ -106,4 +107,22 @@ SideBarUI.propTypes = {
     mapMarkers: React.PropTypes.object.isRequired,
 }
 
-export default SideBarUI;
+export default createContainer(() => {
+    Meteor.subscribe('shelters');
+    Meteor.subscribe('crises.fire');
+    Meteor.subscribe('crises.flood');
+    Meteor.subscribe('crises.road');
+    return{
+        mapMarkers:{
+            "Shelters": Shelters.find().fetch().slice(0,30),
+            "Crises": Crises.find().fetch(),
+            "Requests": Crises.find({ assistance: true, resolved: false }).fetch(),
+        },
+        reportInfo:{
+            "Shelters": Shelters.find().count(),
+            "Fire": Crises.find({type:"fire"}).count(),
+            "Flood": Crises.find({type:"flood"}).count(),
+            "Road": Crises.find({type:"road"}).count(),
+        }
+    };
+}, SideBarUI)

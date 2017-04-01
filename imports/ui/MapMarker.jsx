@@ -1,6 +1,5 @@
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
 import FontIcon from 'material-ui/FontIcon';
-import {Card, CardActions, CardHeader, CardTitle} from 'material-ui/Card';
 
 const mapIcon = {
     shelters: "nature",

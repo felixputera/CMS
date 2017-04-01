@@ -1,4 +1,3 @@
-// import { Meteor } from 'meteor/meteor';
 import React, {Component, PropTypes} from 'react';
 import GoogleMapReact from 'google-map-react';
 import { createContainer } from 'meteor/react-meteor-data';

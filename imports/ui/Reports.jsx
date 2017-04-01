@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import {SortableContainer, SortableElement, SortableHandle, arrayMove} from 'react-sortable-hoc';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
-// import ReactDOM from 'react-dom';
 
 import { ReportList } from './ReportList.jsx';
 

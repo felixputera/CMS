@@ -1,12 +1,9 @@
 import React, {Component, PropTypes} from 'react';
-import ReactDOM from 'react-dom';
 import {Card, CardActions, CardHeader, CardTitle} from 'material-ui/Card';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
-import RaisedButton from 'material-ui/RaisedButton';
-import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import Toggle from 'material-ui/Toggle';
 

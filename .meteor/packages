@@ -27,5 +27,6 @@ underscore
 accounts-ui
 accounts-password
 react-meteor-data
-accounts-facebook
 session
+kadira:flow-router
+zetoff:accounts-material-ui

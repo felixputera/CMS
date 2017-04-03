@@ -8,7 +8,7 @@ import AccountsButton from  '../AccountsButton.jsx'
 
 injectTapEventPlugin();
 
-class App extends Component {
+export default class App extends Component {
     constructor(props){
         super(props);
     }
@@ -39,7 +39,3 @@ const logoutHandler = () => {
     Meteor.logout();
     location.reload();
 };
-
-export default createContainer(() => {
-    return{ };
-}, App)

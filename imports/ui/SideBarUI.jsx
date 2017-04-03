@@ -13,6 +13,7 @@ import Requests from './Requests.jsx';
 
 import { Shelters } from '../api/shelters/shelters.js';
 import { Crises } from '../api/crises/crises.js';
+import { Psi } from '../api/psi/psi.js';
 
 
 class SideBarUI extends Component {
@@ -25,7 +26,10 @@ class SideBarUI extends Component {
                     {'name':'Fire','hide':false},
                     {'name':'Flood','hide':false},
                     {'name':'Road','hide':false},
-                    {'name':'GasLeak','hide':false}],
+                    {'name':'GasLeak','hide':false},
+                    {'name':'PSI','hide':false},
+                    ],
+            // hidePSI: false,
             tempMarker: null,
             mapCenter: {lat: 1.360441703738914, lng: 103.81276744946285},
             hideForm: true,
@@ -35,7 +39,16 @@ class SideBarUI extends Component {
     handleChange(newOrder){
         this.setState({
             order: newOrder,
+            // hidePSI: this.hidePSIstate(newOrder),
         });
+    }
+
+    hidePSIstate(newOrder){
+        newOrder.forEach((value) => {
+            if(value.name == 'PSI'){
+                return value.hide;
+            }
+        })
     }
 
     setTempMarker({x, y, lat, lng, event}){
@@ -45,6 +58,7 @@ class SideBarUI extends Component {
                 tempMarker: {'lat': lat, 'lng': lng},
             });
         }
+        console.log(lat, lng);
     }
 
     clearTempMarker(){
@@ -99,6 +113,7 @@ class SideBarUI extends Component {
             <div className="side-bar">
                 <Sidebar ref="sideBar"
                     children={<MapUI
+                    hidePSI={this.state.hidePSI}
                     order={this.state.order}
                     markers={this.props.mapMarkers}
                     tempMarker={this.state.tempMarker}
@@ -135,13 +150,15 @@ SideBarUI.propTypes = {
 
 export default createContainer(() => {
     Meteor.subscribe('shelters');
+    Meteor.subscribe('psi');
     Meteor.subscribe('crises.fire');
     Meteor.subscribe('crises.flood');
     Meteor.subscribe('crises.road');
     Meteor.subscribe('crises.gasleak');
     return{
         mapMarkers:{
-            "Shelters": Shelters.find().fetch(),
+            "Shelters": Shelters.find().fetch().slice(0,200),
+            "PSI": Psi.find().fetch().slice(0,1),
             "Crises": Crises.find().fetch(),
             "Requests": Crises.find({ assistance: true, resolved: false }).fetch(),
         },

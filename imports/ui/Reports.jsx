@@ -48,10 +48,10 @@ export default class Reports extends Component{
 
     render() {
         return (
-            <div>
+            <div className="reports">
                 <Subheader>Reports</Subheader>
                 <Divider/>
-                <ReportList className="reports"
+                <ReportList
                 helperClass="dragging"
                 items={this.state.order}
                 info={this.props.info}

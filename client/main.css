@@ -29,7 +29,8 @@ body {
 .reports {
   height: 50%;
   width:100%;
-  position: relative;
+  position:relative;
+  overflow-x:scroll;
 }
 
 .requests {
@@ -168,6 +169,11 @@ a:hover, a:visited, a:link, a:active {
   position: absolute;
 }
 
+.index6 {
+  z-index: 95;
+  position: absolute;
+}
+
 .hiddenMarkers {
   display: none;
 }
@@ -206,6 +212,9 @@ li.report-item-Road{
 }
 li.report-item-GasLeak{
   border-left:5px solid #00695C;
+}
+li.report-item-PSI{
+  border-left:5px solid #4E342E;
 }
 
 li.report-item>.report-info{

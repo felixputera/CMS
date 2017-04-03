@@ -8,13 +8,15 @@ import {ListItem} from 'material-ui/List';
 const reportTypeDisplay = {
     "fire":"Fire",
     "flood":"Flood",
-    "road":"Road",
+    "road":"Road Accident",
+    "gasleak":"Gas Leak",
 }
 
 const reportTypeIcon = {
     "fire":"whatshot",
     'flood':"pool",
     'road':'traffic',
+    "gasleak":'cloud',
 }
 
 export default class RequestItem extends Component{

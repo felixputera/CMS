@@ -9,6 +9,8 @@ const mapIcon = {
     fire: "whatshot",
     road: "traffic",
     add: "add_location",
+    gasleak: "bubble_chart",
+    psi: "cloud",
 }
 
 const hoverColor = {
@@ -18,6 +20,7 @@ const hoverColor = {
     road: "#FFCC80",
     gasleak: "#B2DFDB",
     add: "#404040",
+    psi: "#D7CCC8",
 }
 
 const iconColor = {
@@ -25,8 +28,9 @@ const iconColor = {
     fire: "#db3236",
     flood: "#4885ed",
     road: "#FF9800",
-    gasleak: "00695C",
+    gasleak: "#00695C",
     add: "#404040",
+    psi: "#4E342E",
 }
 
 export default class MapMarker extends Component {
@@ -54,8 +58,8 @@ export default class MapMarker extends Component {
                 </FontIcon>
                 {/*</IconButton>*/}
                 <div className="marker-info" style={{backgroundColor:"#FAFAFA"}}>
-                    {this.props.address}
-                    <RaisedButton onTouchTap={this.deleteMarker.bind(this)} label="Delete" />
+                    <div>{this.props.address}</div>
+                    <RaisedButton onTouchTap={this.deleteMarker.bind(this)} label="Delete" primary={true} style={{margin:0, marginTop:10}}/>
                 </div>
             </div>
         )

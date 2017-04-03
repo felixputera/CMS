@@ -100,7 +100,7 @@ export default class RequestForm extends Component {
     const unitNumber = this.state.unitNumber;
     const assistance = this.state.assistance;
 
-    if (!type || !address || !region || !description ) {
+    if (!type || !address || !region || !description || (this.state.useMarker && !this.props.tempMarker)) {
         return;
     }
 

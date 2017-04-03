@@ -24,6 +24,8 @@ export default class Requests extends Component{
                     <RequestItem
                     key={request._id}
                     taianjing={request._id}
+                    lat={request.latitude}
+                    lng={request.longitude}
                     type={request.type}
                     assType={request.assistanceType}
                     desc={request.description}
@@ -31,6 +33,7 @@ export default class Requests extends Component{
                     number={request.unitNumber}
                     address={request.address}
                     date={request.time}
+                    setMapCenter={this.props.setMapCenter.bind(this)}
                     />
                 )
             }))
@@ -54,7 +57,7 @@ export default class Requests extends Component{
                     <Divider/>
                     <div style={{height:50}}/>
                 </List>
-                {this.state.hideForm ? null : <RequestForm/>}
+                {this.state.hideForm ? null : <RequestForm tempMarker={this.props.tempMarker}/>}
                 <span className="add-request">
                     <IconButton onClick={this.hideShowForm.bind(this)}>
                         {this.state.hideForm ? <FontIcon className="material-icons md-24">add</FontIcon> :

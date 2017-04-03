@@ -6,6 +6,7 @@ const mapIcon = {
     flood: "pool",
     fire: "whatshot",
     road: "traffic",
+    add: "add_location",
 }
 
 const hoverColor = {
@@ -13,6 +14,7 @@ const hoverColor = {
     fire: "#EF9A9A",
     flood: "#81D4FA",
     road: "#FFCC80",
+    add: "#404040",
 }
 
 const iconColor = {
@@ -20,22 +22,36 @@ const iconColor = {
     fire: "#db3236",
     flood: "#4885ed",
     road: "#FF9800",
+    add: "#404040",
 }
 
 export default class MapMarker extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            showInfo: false,
+        };
+    }
+
+    toggleClickOrClear(){
+        if (this.props.type == "add"){
+            console.log("ini marker add");
+        }
+    }
+
     render(){
         return(
             <div className={this.props.kelas}>
-                <FontIcon className="material-icons md-48" color={iconColor[this.props.type]} hoverColor={hoverColor[this.props.type]}>{mapIcon[this.props.type]}</FontIcon>
+                {/*<IconButton onTouchTap={this.toggleClickOrClear.bind(this)}>*/}
+                <FontIcon className="material-icons md-48"
+                color={iconColor[this.props.type]}
+                hoverColor={hoverColor[this.props.type]}
+                >
+                    {mapIcon[this.props.type]}
+                </FontIcon>
+                {/*</IconButton>*/}
                 <div className="marker-info" style={{backgroundColor:"#FAFAFA"}}>
                     {this.props.address}
-                    {/*<Card style={{backgroundColor:iconColor[this.props.type]}}>
-                        <CardHeader title={this.props.address} subtitle={this.props.region}/>
-                        <CardTitle title={this.props.type} subtitle={this.props.name} />
-                        {this.props.desc? <CardText>
-                            {this.props.desc}
-                        </CardText> : null}
-                    </Card>*/}
                 </div>
             </div>
         )

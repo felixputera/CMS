@@ -23,7 +23,7 @@ const style = {
     width:255,
     paddingLeft:0,
     marginLeft:0,
-    marginTop:10,
+    marginTop:5,
   }
 }
 
@@ -39,6 +39,7 @@ export default class RequestForm extends Component {
       postalCode:'',
       unitNumber:'',
       assistance: false,
+      useMarker: false,
 
       minimise: false,
     };
@@ -65,15 +66,21 @@ export default class RequestForm extends Component {
     })
   }
 
-  handleAssTypeChange(event, index, value){
-    this.setState({
-      assistanceType: value,
-    })
-  }
+  // handleAssTypeChange(event, index, value){
+  //   this.setState({
+  //     assistanceType: value,
+  //   })
+  // }
 
   handleAssChange(event, bool){
     this.setState({
       assistance: !this.state.assistance,
+    })
+  }
+
+  handleMarkerChange(event, bool){
+    this.setState({
+      useMarker: !this.state.useMarker,
     })
   }
 
@@ -86,7 +93,6 @@ export default class RequestForm extends Component {
     // const address = ReactDOM.findDOMNode(this.refs.address).value.trim();
 
     const type = this.state.type;
-    const assistanceType = this.state.assistanceType;
     const address = this.state.address;
     const region = this.state.region;
     const description = this.state.description;
@@ -94,12 +100,12 @@ export default class RequestForm extends Component {
     const unitNumber = this.state.unitNumber;
     const assistance = this.state.assistance;
 
-    if (!type || !address || !region || !description || (assistance && !assistanceType)) {
+    if (!type || !address || !region || !description ) {
         return;
     }
 
     Meteor.call('crises.insert', region, address, type, description,
-    assistance, assistanceType, postalCode, unitNumber);
+    assistance, postalCode, unitNumber);
 
     this.handleReset(null);
 
@@ -126,7 +132,7 @@ export default class RequestForm extends Component {
         <div className="request-form-head">
         <span>NEW</span>
         <DropDownMenu value={this.state.type} name="type" style={style.dropDownType} onChange={this.handleTypeChange.bind(this)} autoWidth={false}>
-          <MenuItem value={null} primaryText="Request Type" disabled={true}/>
+          <MenuItem value={null} primaryText="Report Type" disabled={true}/>
           <MenuItem value="fire" primaryText="Fire" />
           <MenuItem value="flood" primaryText="Flood" />
           <MenuItem value="road" primaryText="Road Accident" />
@@ -143,12 +149,12 @@ export default class RequestForm extends Component {
               defaultToggled={this.state.assistance}
               onToggle={this.handleAssChange.bind(this)}
             />
-            <DropDownMenu value={this.state.assistanceType} name="type" style={style.dropDownAssType} 
+            {/*<DropDownMenu value={this.state.assistanceType} name="type" style={style.dropDownAssType} 
             onChange={this.handleAssTypeChange.bind(this)} autoWidth={false} disabled={!this.state.assistance}>
               <MenuItem value={null} primaryText="Assistance Type" disabled={true}/>
               <MenuItem value="ambulance" primaryText="Emergency Ambulance" />
               <MenuItem value="gasControl" primaryText="Gas Leak Control" />
-            </DropDownMenu>
+            </DropDownMenu>*/}
             <TextField
               hintText="Description"
               name="description"
@@ -175,6 +181,11 @@ export default class RequestForm extends Component {
               onChange={this.handleInputChange.bind(this)}
               style={style.textField}/>
             <br />
+            <Toggle
+              label="Use marker coordinate"
+              defaultToggled={this.state.useMarker}
+              onToggle={this.handleMarkerChange.bind(this)}
+            />
             <TextField
               hintText="Postal code"
               name="postalCode"

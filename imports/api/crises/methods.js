@@ -6,7 +6,7 @@ import { sendSms } from '../../utils/sms-sender.js';
 import { Crises } from './crises.js';
 
 Meteor.methods({
-    'crises.insert'(region, address, type, description, assistance, assistanceType, postalCode, unitNumber) {
+    'crises.insert'(region, address, type, description, assistance, postalCode, unitNumber) {
         if (!this.userId) {
             throw new Meteor.Error('not-authorized');
         }
@@ -25,7 +25,6 @@ Meteor.methods({
             description: description,
             userId: this.userId,
             assistance: assistance,
-            assistanceType: assistanceType,
             resolved: false,
         });
         sendAlert(region, address, type, description);

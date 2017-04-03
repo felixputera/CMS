@@ -97,6 +97,22 @@ export default class MapUI extends Component {
         });
     }
 
+    placeTempMarker(){
+        if(this.props.tempMarker){
+            // console.log(this.props.tempMarker);
+            return (
+                <MapMarker
+                lat={this.props.tempMarker.lat}
+                lng={this.props.tempMarker.lng}
+                type="add"
+                kelas="temp-marker"
+                clearSelf={this.props.clearTempMarker.bind(this)} />
+            )
+        } else {
+            return;
+        }
+    }
+
     // refresh() {
     //     ReactDOM.findDOMNode(this.refs.map).innerHTML = placeMarkers();
     //     console.log("refresh called!");
@@ -107,13 +123,15 @@ export default class MapUI extends Component {
         return (
             <div className="map-ui">
                 <GoogleMapReact ref="map"
-                center={{lat: 1.378461, lng: 103.848988}}
-                zoom={12}
+                center={this.props.center}
+                zoom={11}
                 bootstrapURLKeys={{
                     key: 'AIzaSyDbhCpS4q1-0LzbLuepBT9JI7bV5PzcP2I',
                     language: 'en'
-                }} >
+                }}
+                onClick={this.props.setTempMarker.bind(this)} >
 
+                {this.placeTempMarker()}
                 {this.placeCrisesMarkers()}
                 {this.placeShelterMarkers()}
 

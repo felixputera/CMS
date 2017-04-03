@@ -12,7 +12,7 @@ Crises.deny({
 Crises.schema = new SimpleSchema({
     _id: { type: String, regEx: SimpleSchema.RegEx.Id },
     time: { type: Date },
-    hour: { type: Number },
+    hour: { type: Number, optional: true  },
     region: { type: String },
     address: { type: String },
     postalCode: { type: String, optional: true },

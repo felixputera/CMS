@@ -5,14 +5,16 @@ import IconButton from 'material-ui/IconButton';
 import {ListItem} from 'material-ui/List';
 
 
-const requestTypeDisplay = {
-    "ambulance":"Emergency Ambulance",
-    "gasControl":"Gas Leak Control",
+const reportTypeDisplay = {
+    "fire":"Fire",
+    "flood":"Flood",
+    "road":"Road",
 }
 
-const requestTypeIcon = {
-    "ambulance":"local_hospital",
-    'gasControl':"cloud"
+const reportTypeIcon = {
+    "fire":"whatshot",
+    'flood':"pool",
+    'road':'traffic',
 }
 
 export default class RequestItem extends Component{
@@ -27,17 +29,21 @@ export default class RequestItem extends Component{
 
     render(){
         return (
-        	//can add Image
             <ListItem
-            leftAvatar={<FontIcon className="material-icons md-36 md-light md-inactive">{requestTypeIcon[this.props.assType]}</FontIcon>}
+            key={this.props.taianjing}
+            className="request-item"
+            leftAvatar={<FontIcon className="material-icons md-36 md-light md-inactive">{reportTypeIcon[this.props.type]}</FontIcon>}
             rightIcon={
                 <span className="delete">
-                    <IconButton onClick={this.deleteThisRequest.bind(this)}>
+                    <IconButton onTouchTap={this.deleteThisRequest.bind(this)}>
                         <FontIcon className="material-icons md-18">done</FontIcon>
                     </IconButton>
                 </span>}
+            children={<div style={{display:"none"}}><input className="lat" defaultValue={this.props.lat} /><input className="lng" defaultValue={this.props.lng} /></div>}
             primaryText={this.props.address}
-            secondaryText={requestTypeDisplay[this.props.assType]}
+            secondaryText={reportTypeDisplay[this.props.type]}
+            hoverColor="#383838"
+            onTouchTap={this.props.setMapCenter.bind(this)}
             />
         );
     }

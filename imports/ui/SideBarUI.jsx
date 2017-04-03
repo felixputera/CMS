@@ -114,7 +114,7 @@ export default createContainer(() => {
     Meteor.subscribe('crises.road');
     return{
         mapMarkers:{
-            "Shelters": Shelters.find().fetch().slice(0,30),
+            "Shelters": Shelters.find().fetch(),
             "Crises": Crises.find().fetch(),
             "Requests": Crises.find({ assistance: true, resolved: false }).fetch(),
         },

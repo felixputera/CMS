@@ -79,6 +79,7 @@ export default class MapUI extends Component {
                     return (
                     <MapMarker
                     key={marker._id}
+                    taianjing={marker._id}
                     lat={marker.latitude}
                     lng={marker.longitude}
                     name={marker.assistanceType}

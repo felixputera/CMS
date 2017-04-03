@@ -105,7 +105,7 @@ export default class RequestForm extends Component {
     }
 
     Meteor.call('crises.insert', region, address, type, description,
-    assistance, postalCode, unitNumber);
+    assistance, postalCode, unitNumber, this.state.useMarker, this.props.tempMarker);
 
     this.handleReset(null);
 
@@ -136,6 +136,7 @@ export default class RequestForm extends Component {
           <MenuItem value="fire" primaryText="Fire" />
           <MenuItem value="flood" primaryText="Flood" />
           <MenuItem value="road" primaryText="Road Accident" />
+          <MenuItem value="gasleak" primaryText="Gas Leak" />
         </DropDownMenu>
         <IconButton onClick={this.minimise.bind(this)}>
           <FontIcon className="material-icons">tab</FontIcon>

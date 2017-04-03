@@ -6,11 +6,16 @@ import { sendSms } from '../../utils/sms-sender.js';
 import { Crises } from './crises.js';
 
 Meteor.methods({
-    'crises.insert'(region, address, type, description, assistance, postalCode, unitNumber) {
+    'crises.insert'(region, address, type, description, assistance, postalCode, unitNumber, useMarker, tempMarker) {
         if (!this.userId) {
             throw new Meteor.Error('not-authorized');
         }
-        const coordinates = generateCoordinates(address);
+        let coordinates;
+        if(!useMarker){
+            coordinates = generateCoordinates(address);
+        } else {
+            coordinates = tempMarker;
+        }
         let d = new Date();
         Crises.insert({
             time: d,
@@ -38,6 +43,8 @@ Meteor.methods({
                 resolved: true,
             },
         });
+        console.log(crisisId);
+        console.log("tay");
     },
 })
 

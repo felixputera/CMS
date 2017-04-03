@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Meteor } from 'meteor/meteor';
 import FontIcon from 'material-ui/FontIcon';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const mapIcon = {
     shelters: "nature",
@@ -14,6 +16,7 @@ const hoverColor = {
     fire: "#EF9A9A",
     flood: "#81D4FA",
     road: "#FFCC80",
+    gasleak: "#B2DFDB",
     add: "#404040",
 }
 
@@ -22,6 +25,7 @@ const iconColor = {
     fire: "#db3236",
     flood: "#4885ed",
     road: "#FF9800",
+    gasleak: "00695C",
     add: "#404040",
 }
 
@@ -33,10 +37,9 @@ export default class MapMarker extends Component {
         };
     }
 
-    toggleClickOrClear(){
-        if (this.props.type == "add"){
-            console.log("ini marker add");
-        }
+    deleteMarker(){
+        console.log("tai");
+        Meteor.call('crises.setResolved', this.props.taianjing);
     }
 
     render(){
@@ -52,6 +55,7 @@ export default class MapMarker extends Component {
                 {/*</IconButton>*/}
                 <div className="marker-info" style={{backgroundColor:"#FAFAFA"}}>
                     {this.props.address}
+                    <RaisedButton onTouchTap={this.deleteMarker.bind(this)} label="Delete" />
                 </div>
             </div>
         )

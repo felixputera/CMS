@@ -163,6 +163,11 @@ a:hover, a:visited, a:link, a:active {
   position: absolute;
 }
 
+.index5 {
+  z-index: 96;
+  position: absolute;
+}
+
 .hiddenMarkers {
   display: none;
 }
@@ -198,6 +203,9 @@ li.report-item-Flood{
 }
 li.report-item-Road{
   border-left:5px solid #FF9800;
+}
+li.report-item-GasLeak{
+  border-left:5px solid #00695C;
 }
 
 li.report-item>.report-info{

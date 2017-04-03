@@ -23,9 +23,9 @@ Meteor.publish('crises.road', function publishRoad(){
     });
 });
 
-Meteor.publish('crises.gasLeak', function publishGas(){
+Meteor.publish('crises.gasleak', function publishGas(){
     return Crises.find({
-        type: 'gasLeak',
+        type: 'gasleak',
         resolved: false
     });
 });

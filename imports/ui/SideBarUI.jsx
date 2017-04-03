@@ -21,12 +21,14 @@ class SideBarUI extends Component {
         super(props);
         this.state = {
             // mainMap: <MapUI order={['Shelters','Crises']} />,
-            order: [{'name':'Shelters','hide':false},
+            order: [{'name':'Shelters','hide':true},
                     {'name':'Fire','hide':false},
                     {'name':'Flood','hide':false},
-                    {'name':'Road','hide':false}],
+                    {'name':'Road','hide':false},
+                    {'name':'GasLeak','hide':false}],
             tempMarker: null,
             mapCenter: {lat: 1.360441703738914, lng: 103.81276744946285},
+            hideForm: true,
         }
     }
 
@@ -38,9 +40,11 @@ class SideBarUI extends Component {
 
     setTempMarker({x, y, lat, lng, event}){
         // console.log(lat,lng);
-        this.setState({
-            tempMarker: {'lat': lat, 'lng': lng},
-        })
+        if(!this.state.hideForm){
+            this.setState({
+                tempMarker: {'lat': lat, 'lng': lng},
+            });
+        }
     }
 
     clearTempMarker(){
@@ -66,13 +70,23 @@ class SideBarUI extends Component {
         })
     }
 
+    hideShowForm(event){
+        this.setState({
+            hideForm: !this.state.hideForm,
+        })
+        if(!this.state.hideForm){
+            this.clearTempMarker();
+        }
+    }
+
     sidebarContent() {
         return (
             <div className="side-bar-content">
                 <Reports order={this.state.order} info={this.props.reportInfo} onOrderChanged={this.handleChange.bind(this)}/>
                 { this.props.user?
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                    <Requests requestlist={this.props.mapMarkers.Requests} setMapCenter={this.setCenter.bind(this)} tempMarker={this.state.tempMarker}/>
+                    <Requests requestlist={this.props.mapMarkers.Requests} setMapCenter={this.setCenter.bind(this)}
+                    tempMarker={this.state.tempMarker} hideShowForm={this.hideShowForm.bind(this)} hideForm={this.state.hideForm}/>
                 </MuiThemeProvider> : null
                  }
             </div>
@@ -124,6 +138,7 @@ export default createContainer(() => {
     Meteor.subscribe('crises.fire');
     Meteor.subscribe('crises.flood');
     Meteor.subscribe('crises.road');
+    Meteor.subscribe('crises.gasleak');
     return{
         mapMarkers:{
             "Shelters": Shelters.find().fetch(),
@@ -135,6 +150,7 @@ export default createContainer(() => {
             "Fire": Crises.find({type:"fire"}).count(),
             "Flood": Crises.find({type:"flood"}).count(),
             "Road": Crises.find({type:"road"}).count(),
+            "GasLeak": Crises.find({type:"gasleak"}).count(),
         },
         user: Meteor.userId(),
     };

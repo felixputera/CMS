@@ -22,7 +22,7 @@ export default class RequestItem extends Component{
         super(props);
     }
 
-	deleteThisRequest() {
+	resolveThisRequest() {
     	Meteor.call('crises.setResolved', this.props.taianjing);
         // console.log(this.props.key);
     }
@@ -35,7 +35,7 @@ export default class RequestItem extends Component{
             leftAvatar={<FontIcon className="material-icons md-36 md-light md-inactive">{reportTypeIcon[this.props.type]}</FontIcon>}
             rightIcon={
                 <span className="delete">
-                    <IconButton onTouchTap={this.deleteThisRequest.bind(this)}>
+                    <IconButton onTouchTap={this.resolveThisRequest.bind(this)}>
                         <FontIcon className="material-icons md-18">done</FontIcon>
                     </IconButton>
                 </span>}

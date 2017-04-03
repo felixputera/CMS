@@ -9,12 +9,7 @@ import RequestItem from './RequestItem.jsx';
 import RequestForm from './RequestForm.jsx';
 
 export default class Requests extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            hideForm: true,
-        }
-    }
+
     requestItemDisplay(){
         if(this.props.requestlist){
             return(
@@ -40,12 +35,6 @@ export default class Requests extends Component{
         } else return;
     }
 
-    hideShowForm(event){
-        this.setState({
-            hideForm: !this.state.hideForm,
-        })
-    }
-
     render(){
         return (
             <div className="requests">
@@ -57,10 +46,10 @@ export default class Requests extends Component{
                     <Divider/>
                     <div style={{height:50}}/>
                 </List>
-                {this.state.hideForm ? null : <RequestForm tempMarker={this.props.tempMarker}/>}
+                {this.props.hideForm ? null : <RequestForm tempMarker={this.props.tempMarker}/>}
                 <span className="add-request">
-                    <IconButton onClick={this.hideShowForm.bind(this)}>
-                        {this.state.hideForm ? <FontIcon className="material-icons md-24">add</FontIcon> :
+                    <IconButton onClick={this.props.hideShowForm.bind(this)}>
+                        {this.props.hideForm ? <FontIcon className="material-icons md-24">add</FontIcon> :
                         <FontIcon className="material-icons md-24">delete</FontIcon>}
                     </IconButton>
                 </span>

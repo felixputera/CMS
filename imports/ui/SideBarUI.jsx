@@ -41,6 +41,11 @@ class SideBarUI extends Component {
             order: newOrder,
             // hidePSI: this.hidePSIstate(newOrder),
         });
+        // if(newOrder.forEach((value) => { if(value.name == 'Shelters'){ return value.hide }})){
+        //     Meteor.subscribe('shelters');
+        // } else {
+        //     Meteor.stop('shelters');
+        // }
     }
 
     hidePSIstate(newOrder){

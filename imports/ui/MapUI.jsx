@@ -50,7 +50,8 @@ export default class MapUI extends Component {
                         zIndex = classnames("marker", "shelters", 'index' + index);
                     }
                     else {
-                        zIndex = classnames("marker", "shelters", 'index' + index, 'hiddenMarkers')
+                        return;
+                        // zIndex = classnames("marker", "shelters", 'index' + index, 'hiddenMarkers')
                     }
                     return (
                         <MapMarker
@@ -64,8 +65,8 @@ export default class MapUI extends Component {
                         region={marker.region}
                         kelas={zIndex}
                         hour={null}
-                        unitNumber={marker.type}
-                        desc={null}
+                        unitNumber={null}
+                        desc={marker.type}
                         />
                     );}
                 });
@@ -83,7 +84,8 @@ export default class MapUI extends Component {
                         zIndex = classnames("marker", marker.type, 'index' + index);
                     }
                     else {
-                        zIndex = classnames("marker", marker.type, 'index' + index, 'hiddenMarkers')
+                        return;
+                        // zIndex = classnames("marker", marker.type, 'index' + index, 'hiddenMarkers')
                     }
                     return (
                     <MapMarker
@@ -119,7 +121,8 @@ export default class MapUI extends Component {
                             zIndex = classnames("marker", "PSI", 'index' + index);
                         }
                         else {
-                            zIndex = classnames("marker", "PSI", 'index' + index, 'hiddenMarkers');
+                            return;
+                            // zIndex = classnames("marker", "PSI", 'index' + index, 'hiddenMarkers');
                         }
                         return (
                             <MapMarker
@@ -127,9 +130,10 @@ export default class MapUI extends Component {
                             lat={PSIMarkerLoc[region].lat}
                             lng={PSIMarkerLoc[region].lng}
                             type={"psi"}
+                            address={region}
                             kelas={zIndex}
                             hour={null}
-                            desc={region}
+                            desc={orderedMarkers[region]}
                             />
                         )
                     }

@@ -123,8 +123,9 @@ a:hover, a:visited, a:link, a:active {
 
 .marker>.marker-info {
   position:absolute;
-  bottom:60px;
-  margin:auto;
+  left:-42px;
+  width:80px;
+  bottom:45px;
   display:none;
   padding:10px;
   padding-right:20px;

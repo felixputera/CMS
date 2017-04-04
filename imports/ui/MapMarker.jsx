@@ -59,7 +59,10 @@ export default class MapMarker extends Component {
                 {/*</IconButton>*/}
                 <div className="marker-info" style={{backgroundColor:"#FAFAFA"}}>
                     <div>{this.props.address}</div>
-                    <RaisedButton onTouchTap={this.deleteMarker.bind(this)} label="Delete" primary={true} style={{margin:0, marginTop:10}}/>
+                    {
+                        this.props.type == "add" ?
+                        null : <RaisedButton onTouchTap={this.deleteMarker.bind(this)} label="Delete" primary={true} style={{margin:0, marginTop:10}}/>
+                    }
                 </div>
             </div>
         )

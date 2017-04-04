@@ -157,7 +157,7 @@ export default createContainer(() => {
     Meteor.subscribe('crises.gasleak');
     return{
         mapMarkers:{
-            "Shelters": Shelters.find().fetch().slice(0,200),
+            "Shelters": Shelters.find().fetch(),
             "PSI": Psi.find().fetch().slice(0,1),
             "Crises": Crises.find().fetch(),
             "Requests": Crises.find({ assistance: true, resolved: false }).fetch(),

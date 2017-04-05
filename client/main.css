@@ -107,10 +107,19 @@ a:hover, a:visited, a:link, a:active {
   text-shadow: rgba(0, 0, 0, 0.14902) 2px 2px 2px;
 }*/
 
-.marker, .temp-marker {
+.marker {
   position:absolute;
-  top:-25px;
-  left:-25px;
+  top:-24px;
+  left:-46px;
+  min-width: 30px;
+  min-height:30px;
+  text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 3px;
+}
+
+.temp-marker {
+  position:absolute;
+  top:-46px;
+  left:-46px;
   min-width: 30px;
   min-height:30px;
   text-shadow: rgba(0, 0, 0, 0.3) 2px 2px 3px;

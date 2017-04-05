@@ -225,12 +225,20 @@ export default class MapUI extends Component {
     //     console.log("refresh called!");
     // }
 
+    _onChange({center, zoom}){
+        this.setState({
+            center: center,
+            zoom: zoom,
+        });
+    }
+
     render(){
         // console.log(this.props.order);
         // console.log("rerenderMapUI")
         return (
             <div className="map-ui">
                 <GoogleMapReact ref="map"
+                onChange={this._onChange.bind(this)}
                 center={this.props.center}
                 zoom={11}
                 bootstrapURLKeys={{

@@ -241,10 +241,6 @@ export default class MapUI extends Component {
                 onChange={this._onChange.bind(this)}
                 center={this.props.center}
                 zoom={11}
-                bootstrapURLKeys={{
-                    key: 'AIzaSyDbhCpS4q1-0LzbLuepBT9JI7bV5PzcP2I',
-                    language: 'en'
-                }}
                 onClick={this.props.setTempMarker.bind(this)}
                 onGoogleApiLoaded={({map, maps}) => this.drawAreaPSI(map, maps, false)}
                 yesIWantToUseGoogleMapApiInternals >

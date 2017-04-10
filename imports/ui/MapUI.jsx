@@ -225,12 +225,12 @@ export default class MapUI extends Component {
     //     console.log("refresh called!");
     // }
 
-    _onChange({center, zoom}){
-        this.setState({
-            center: center,
-            zoom: zoom,
-        });
-    }
+    // _onChange({center, zoom}){
+    //     this.setState({
+    //         center: center,
+    //         zoom: zoom,
+    //     });
+    // }
 
     render(){
         // console.log(this.props.order);
@@ -238,9 +238,9 @@ export default class MapUI extends Component {
         return (
             <div className="map-ui">
                 <GoogleMapReact ref="map"
-                onChange={this._onChange.bind(this)}
+                onChange={this.props.handleChange.bind(this)}
                 center={this.props.center}
-                zoom={11}
+                zoom={this.props.zoom}
                 onClick={this.props.setTempMarker.bind(this)}
                 onGoogleApiLoaded={({map, maps}) => this.drawAreaPSI(map, maps, false)}
                 yesIWantToUseGoogleMapApiInternals >

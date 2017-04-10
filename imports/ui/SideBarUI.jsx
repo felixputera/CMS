@@ -32,6 +32,7 @@ class SideBarUI extends Component {
             // hidePSI: false,
             tempMarker: null,
             mapCenter: {lat: 1.360441703738914, lng: 103.81276744946285},
+            mapZoom: 11,
             hideForm: true,
         }
     }
@@ -89,6 +90,13 @@ class SideBarUI extends Component {
         })
     }
 
+    handleMapChange({center, zoom}){
+        this.setState({
+            mapCenter: center,
+            mapZoom: zoom,
+        });
+    }
+
     hideShowForm(event){
         this.setState({
             hideForm: !this.state.hideForm,
@@ -118,11 +126,13 @@ class SideBarUI extends Component {
             <div className="side-bar">
                 <Sidebar ref="sideBar"
                     children={<MapUI
+                    handleChange={this.handleMapChange.bind(this)}
                     hidePSI={this.state.hidePSI}
                     order={this.state.order}
                     markers={this.props.mapMarkers}
                     tempMarker={this.state.tempMarker}
                     center={this.state.mapCenter}
+                    zoom={this.state.mapZoom}
                     setTempMarker={this.setTempMarker.bind(this)}
                     setCenter={this.setCenter.bind(this)}
                     clearTempMarker={this.clearTempMarker.bind(this)}

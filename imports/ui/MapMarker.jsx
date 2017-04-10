@@ -61,7 +61,7 @@ export default class MapMarker extends Component {
                     <div>{this.props.address}</div>
                     <h3>{this.props.desc}</h3>
                     {
-                        this.props.type == "add" ?
+                        (this.props.type == "add" || this.props.type == "psi" || this.props.type == "shelters") ?
                         null : <RaisedButton onTouchTap={this.deleteMarker.bind(this)} label="Delete" primary={true} style={{margin:0, marginTop:10}}/>
                     }
                 </div>

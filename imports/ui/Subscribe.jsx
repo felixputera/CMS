@@ -3,6 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import Snackbar from 'material-ui/Snackbar';
 
 export default class Subscribe extends Component {
     constructor(props){
@@ -10,6 +11,9 @@ export default class Subscribe extends Component {
         this.state = {
             number: '',
             region: null,
+            tempNum: '',
+            tempRegion: '',
+            open: false,
         }
     }
 
@@ -31,12 +35,29 @@ export default class Subscribe extends Component {
             return;
         }
         Meteor.call("sms.insert", this.state.number, this.state.region);
+        this.setState({
+            tempNum: this.state.number,
+            tempRegion: this.state.region,
+        })
+        this.handleTouchTap();
 
         this.setState({
             number: '',
             region: null,
         })
     }
+
+    handleTouchTap(){
+        this.setState({
+            open: true,
+        });
+    };
+
+    handleRequestClose(){
+        this.setState({
+            open: false,
+        });
+    };
 
     render(){
         return (
@@ -56,6 +77,12 @@ export default class Subscribe extends Component {
                     <MenuItem value="south" primaryText="South" />
                 </DropDownMenu>
                 <RaisedButton label="Subscribe" onTouchTap={this.subscribe.bind(this)} style={{marginBottom:10}}primary={true} className="subscribe-button"/>
+                <Snackbar
+                open={this.state.open}
+                message={"Subscribed to " + this.state.tempNum + " in region " + this.state.tempRegion}
+                autoHideDuration={4000}
+                onRequestClose={this.handleRequestClose.bind(this)}
+                />
             </div>
         )
     }

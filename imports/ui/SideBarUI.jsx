@@ -66,7 +66,7 @@ class SideBarUI extends Component {
                 tempMarker: {'lat': lat, 'lng': lng},
             });
         }
-        console.log(lat, lng);
+        // console.log(lat, lng);
     }
 
     clearTempMarker(){
@@ -112,7 +112,7 @@ class SideBarUI extends Component {
         this.setState({
             sidebarLoaded: true,
         })
-        console.log("sidebar is loaded");
+        // console.log("sidebar is loaded");
         setTimeout(()=>{
             this.showMap();
         }, 1000);
@@ -139,7 +139,7 @@ class SideBarUI extends Component {
     }
 
     render(){
-        console.log('rendering sidebar');
+        // console.log('rendering sidebar');
         return(
             <div className="side-bar">
                 <Sidebar ref="sideBar"

@@ -19,6 +19,7 @@ export default class MapUI extends Component {
         super(props);
         this.state = {
             order: this.props.order,
+            show: false,
         }
     }
 
@@ -232,12 +233,25 @@ export default class MapUI extends Component {
     //     });
     // }
 
+    componentWillMount(){
+        console.log("MapUI update");
+        setTimeout(()=>{
+            this.showMap();
+        }, 3000);
+    }
+
+    showMap(){
+        this.setState({
+            show: true,
+        })
+    }
+
     render(){
         // console.log(this.props.order);
         // console.log("rerenderMapUI")
         return (
             <div className="map-ui">
-                {this.props.sidebarLoaded ? 
+                {this.state.show ? 
                     <GoogleMapReact ref="map"
                     onChange={this.props.handleChange.bind(this)}
                     center={this.props.center}

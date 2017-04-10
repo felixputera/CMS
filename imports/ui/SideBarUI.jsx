@@ -111,6 +111,7 @@ class SideBarUI extends Component {
         this.setState({
             sidebarLoaded: true,
         })
+        console.log("sidebar is loaded");
     }
 
     sidebarContent() {
@@ -128,7 +129,7 @@ class SideBarUI extends Component {
     }
 
     render(){
-        // console.log('Bullshit ', this.props.mapMarkers)
+        console.log('rendering sidebar');
         return(
             <div className="side-bar">
                 <Sidebar ref="sideBar"

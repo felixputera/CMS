@@ -3,10 +3,11 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { createContainer } from 'meteor/react-meteor-data';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import AccountsButton from  '../AccountsButton.jsx'
+import Subscribe from '../Subscribe.jsx'
 
+injectTapEventPlugin();
 
-export default class App extends Component {
+export default class Public extends Component {
     constructor(props){
         super(props);
     }
@@ -19,8 +20,8 @@ export default class App extends Component {
             <MuiThemeProvider>
                 <div className="container">
                     <header>
-                        <h2><a href="/admin" >Crisis Management System</a></h2>
-                        <AccountsButton/>
+                        <h2><a href="/" >Crisis Management System</a></h2>
+                        <Subscribe />
                     </header>
                     {main}
                 </div>
@@ -29,6 +30,6 @@ export default class App extends Component {
     }
 }
 
-App.propTypes = {
+Public.propTypes = {
     main: PropTypes.object.isRequired,
 };

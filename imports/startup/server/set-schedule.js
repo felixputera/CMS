@@ -31,7 +31,7 @@ SyncedCron.add({
         return parser.text('every 1 hour');
     },
     job: () => {
-        const socMedMessage = Meteor.call('pmReport');
+        const socMedMessage = Meteor.call('socMedReport');
         postTwitter(socMedMessage);
         postFacebook(socMedMessage);
     }

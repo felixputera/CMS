@@ -15,7 +15,7 @@ const T = new Twit({
 export const postFacebook = (text) => {
     let pageAccessToken = keys.facebook;
     return HTTP.post("https://graph.facebook.com/v2.8/286242935138459/feed?message=" + text + "&access_token=" + pageAccessToken);
-    return console.log("Twitter tweeted");
+    return console.log("Posted to Facebook");
 };
 
 export const sendEmail = (recipient, text) => {
@@ -34,8 +34,18 @@ export const sendEmail = (recipient, text) => {
 };
 
 export const postTwitter = (text) => {
-    T.post('statuses/update', { status: text }, function(err, data, response) {
-        console.log(data);
-    });
-    return console.log("Twitter tweeted");
+    const charCount = text.length();
+    if (charCount <= 140) {
+        T.post('statuses/update', {status: text}, function (err, data, response) {
+            console.log(data);
+        });
+    } else {
+        const numberOfTweets = Math.ceil(charCount/140);
+        for(let i = 0; i < numberOfTweets; i++) {
+            T.post('statuses/update', {status: text.slice(i*140, i*140 + 140)}, function (err, data, response) {
+                console.log(data);
+            });
+        }
+    }
+    return console.log("Tweeted to Twitter");
 };

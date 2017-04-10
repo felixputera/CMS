@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
+import { createContainer } from 'meteor/react-meteor-data';
 
 const mapIcon = {
     shelters: "nature",
@@ -33,7 +34,7 @@ const iconColor = {
     psi: "#4E342E",
 }
 
-export default class MapMarker extends Component {
+class MapMarker extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -61,7 +62,7 @@ export default class MapMarker extends Component {
                     <div>{this.props.address}</div>
                     <h3>{this.props.desc}</h3>
                     {
-                        (this.props.type == "add" || this.props.type == "psi" || this.props.type == "shelters") ?
+                        (this.props.type == "add" || this.props.type == "psi" || this.props.type == "shelters" || !this.props.user) ?
                         null : <RaisedButton onTouchTap={this.deleteMarker.bind(this)} label="Delete" primary={true} style={{margin:0, marginTop:10}}/>
                     }
                 </div>
@@ -69,3 +70,9 @@ export default class MapMarker extends Component {
         )
     }
 }
+
+export default createContainer(()=>{
+    return{
+        user: Meteor.userId(),
+    };
+}, MapMarker)

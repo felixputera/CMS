@@ -35,6 +35,7 @@ class SideBarUI extends Component {
             mapZoom: 11,
             hideForm: true,
             sidebarLoaded: false,
+            show: false,
         }
     }
 
@@ -112,6 +113,15 @@ class SideBarUI extends Component {
             sidebarLoaded: true,
         })
         console.log("sidebar is loaded");
+        setTimeout(()=>{
+            this.showMap();
+        }, 1000);
+    }
+
+    showMap(){
+        this.setState({
+            show: true,
+        })
     }
 
     sidebarContent() {
@@ -134,7 +144,7 @@ class SideBarUI extends Component {
             <div className="side-bar">
                 <Sidebar ref="sideBar"
                     children={<MapUI
-                    sidebarLoaded={this.state.sidebarLoaded}
+                    sidebarLoaded={this.state.show}
                     handleChange={this.handleMapChange.bind(this)}
                     hidePSI={this.state.hidePSI}
                     order={this.state.order}

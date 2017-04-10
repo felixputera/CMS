@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 import { generateCoordinates } from '../../utils/address-tools.js'
-import { sendSms } from '../../utils/sms-sender.js';
+import { sendSms, sendSmsToSpecificNumber } from '../../utils/sms-sender.js';
 
 import { Crises } from './crises.js';
 
@@ -33,6 +33,9 @@ Meteor.methods({
             resolved: false,
         });
         sendAlert(region, address, type, description);
+        if (assistance) {
+            sendToScdf(region, address, type, description);
+        }
     },
     'crises.setResolved'(crisisId){
         // if (!this.userId) {
@@ -46,9 +49,16 @@ Meteor.methods({
         console.log(crisisId);
         console.log("tay");
     },
-})
+});
 
 const sendAlert = (regionArea, address, type, description) => {
-    let message = "[INCIDENT IN YOUR AREA] A " + type + " just happened at " + address + ". " + description;
+    let message = "[INCIDENT IN YOUR AREA] \n A " + type + " just happened at " + address + ". " + description;
     sendSms(regionArea, message);
+};
+
+const sendToScdf = (regionArea, address, type, description) => {
+    let scdfNumber = 12345678;
+    let message = "[Assistance Requested] \n A " + type + " just happened at " + address + ". " + description +
+                  ". \n Assistance requested by the reporter.";
+    sendSmsToSpecificNumber(scdfNumber, message);
 }

@@ -23,3 +23,16 @@ export const sendSms = (regionArea, message) => {
     console.log('sms sent');
     });
 };
+
+export const sendSmsToSpecificNumber = (phoneNumber, message) => {
+    client.messages.create({
+        body: message,
+        to: phoneNumber,  // Text this number
+        from: twilioKey.phoneNumber // From a valid Twilio number
+    }, function(err, message) {
+        if(err) {
+            console.error(err.message);
+        }
+    });
+    console.log('sms sent');
+};

@@ -34,6 +34,7 @@ class SideBarUI extends Component {
             mapCenter: {lat: 1.360441703738914, lng: 103.81276744946285},
             mapZoom: 11,
             hideForm: true,
+            sidebarLoaded: false,
         }
     }
 
@@ -106,6 +107,12 @@ class SideBarUI extends Component {
         }
     }
 
+    componentDidMount(){
+        this.setState({
+            sidebarLoaded: true,
+        })
+    }
+
     sidebarContent() {
         return (
             <div className="side-bar-content">
@@ -126,6 +133,7 @@ class SideBarUI extends Component {
             <div className="side-bar">
                 <Sidebar ref="sideBar"
                     children={<MapUI
+                    sidebarLoaded={this.state.sidebarLoaded}
                     handleChange={this.handleMapChange.bind(this)}
                     hidePSI={this.state.hidePSI}
                     order={this.state.order}

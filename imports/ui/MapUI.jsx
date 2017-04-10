@@ -237,20 +237,22 @@ export default class MapUI extends Component {
         // console.log("rerenderMapUI")
         return (
             <div className="map-ui">
-                <GoogleMapReact ref="map"
-                onChange={this.props.handleChange.bind(this)}
-                center={this.props.center}
-                zoom={this.props.zoom}
-                onClick={this.props.setTempMarker.bind(this)}
-                onGoogleApiLoaded={({map, maps}) => this.drawAreaPSI(map, maps, false)}
-                yesIWantToUseGoogleMapApiInternals >
+                {this.props.sidebarLoaded ? 
+                    <GoogleMapReact ref="map"
+                    onChange={this.props.handleChange.bind(this)}
+                    center={this.props.center}
+                    zoom={this.props.zoom}
+                    onClick={this.props.setTempMarker.bind(this)}
+                    onGoogleApiLoaded={({map, maps}) => this.drawAreaPSI(map, maps, false)}
+                    yesIWantToUseGoogleMapApiInternals >
 
-                {this.placeTempMarker()}
-                {this.placeCrisesMarkers()}
-                {this.placeShelterMarkers()}
-                {this.placePSIMarkers()}
+                    {this.placeTempMarker()}
+                    {this.placeCrisesMarkers()}
+                    {this.placeShelterMarkers()}
+                    {this.placePSIMarkers()}
 
-                </GoogleMapReact>
+                    </GoogleMapReact> : null
+                }
             </div>
         );
     }

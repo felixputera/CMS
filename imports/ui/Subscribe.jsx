@@ -41,7 +41,12 @@ export default class Subscribe extends Component {
     render(){
         return (
             <div className="subscribe">
-                <TextField value={this.state.number} floatingLabelText="Phone Number" style={{top:-15, width:200}} onChange={this.handleNumChange.bind(this)}/>
+                <TextField value={this.state.number}
+                floatingLabelText="Phone Number"
+                hintText="e.g. +6598765432"
+                style={{top:-15, width:200}}
+                onChange={this.handleNumChange.bind(this)}
+                />
                 <DropDownMenu value={this.state.region} name="region" style={{width:150}} onChange={this.handleRegionChange.bind(this)} autoWidth={false}>
                     <MenuItem value={null} primaryText="Region" disabled={true}/>
                     <MenuItem value="north" primaryText="North" />

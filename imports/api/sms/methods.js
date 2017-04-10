@@ -8,5 +8,6 @@ Meteor.methods({
             phoneNumber,
             region
         });
+        console.log("subscribe", phoneNumber, region);
     },
 })

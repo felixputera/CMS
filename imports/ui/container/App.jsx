@@ -5,6 +5,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Meteor } from 'meteor/meteor';
 
 import AccountsButton from  '../AccountsButton.jsx'
+import Subscribe from '../Subscribe.jsx'
 
 injectTapEventPlugin();
 
@@ -22,6 +23,7 @@ export default class App extends Component {
                 <div className="container">
                     <header>
                         <h2><a href="/" >Crisis Management System</a></h2>
+                        <Subscribe />
                         <AccountsButton/>
                     </header>
                     {main}

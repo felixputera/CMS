@@ -350,6 +350,24 @@ ul {
   display:none;
 }
 
+.subscribe {
+  display: block;
+  position: fixed;
+  height: 60px;
+  float: right;
+  right: 120px;
+  top: 0;
+  padding: 0 20px;
+  padding-right: 120px;
+  background-color: #fafafa;
+}
+
+.subscribe-button {
+  position: absolute;
+  top:12px;
+  right: 15px;
+}
+
 .material-icons.md-12 { font-size: 12px !important; }
 .material-icons.md-18 { font-size: 18px !important; }
 .material-icons.md-24 { font-size: 24px !important; }

@@ -19,7 +19,7 @@ const style = {
     paddingBottom:12,
     width:176,
   },
-  dropDownAssType:{
+  dropDownRegion:{
     width:255,
     paddingLeft:0,
     marginLeft:0,
@@ -34,7 +34,7 @@ export default class RequestForm extends Component {
       type: null,
       assistanceType: null,
       address: '',
-      region:'',
+      region:null,
       description:'',
       postalCode:'',
       unitNumber:'',
@@ -66,11 +66,11 @@ export default class RequestForm extends Component {
     })
   }
 
-  // handleAssTypeChange(event, index, value){
-  //   this.setState({
-  //     assistanceType: value,
-  //   })
-  // }
+  handleRegionChange(event, index, value){
+    this.setState({
+      region: value,
+    })
+  }
 
   handleAssChange(event, bool){
     this.setState({
@@ -165,13 +165,15 @@ export default class RequestForm extends Component {
               onChange={this.handleInputChange.bind(this)}
               style={style.textField}/>
             <br />
-            <TextField
-              hintText="Region"
-              name="region"
-              errorText={this.state.region? null : "This field is required"}
-              value={this.state.region}
-              onChange={this.handleInputChange.bind(this)}
-              style={style.textField}/>
+            <DropDownMenu value={this.state.region} name="region" style={style.dropDownRegion} 
+            onChange={this.handleRegionChange.bind(this)} autoWidth={false}>
+              <MenuItem value={null} primaryText="Region" disabled={true}/>
+              <MenuItem value="north" primaryText="North" />
+              <MenuItem value="central" primaryText="Central" />
+              <MenuItem value="east" primaryText="East" />
+              <MenuItem value="west" primaryText="West" />
+              <MenuItem value="south" primaryText="South" />
+            </DropDownMenu>
             <br />
             <TextField
               hintText="Address"
@@ -210,8 +212,7 @@ export default class RequestForm extends Component {
               onTouchTap={this.handleSubmit.bind(this)}
               style={style.actionButton}
               tooltip={(this.state.type && this.state.address && this.state.region &&
-              this.state.description && (this.state.assistance &&
-              !this.state.assistanceType)) ? null : "Some fields are required"}
+              this.state.description) ? null : "Some fields are required"}
               tooltipPosition="top-center">
                 <FontIcon className="material-icons md-24">done</FontIcon>  
               </IconButton>

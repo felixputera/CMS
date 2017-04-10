@@ -235,9 +235,11 @@ export default class MapUI extends Component {
 
     componentWillMount(){
         console.log("MapUI update");
-        setTimeout(()=>{
-            this.showMap();
-        }, 3000);
+        if(this.props.sidebarLoaded){
+            setTimeout(()=>{
+                this.showMap();
+            }, 1000);
+        }
     }
 
     showMap(){

@@ -12,7 +12,7 @@ FlowRouter.route('/', {
     name: 'public',
     action() {
         mount(Public, {
-            main: <SideBarUI/>,
+            main: <SideBarUI showRequest={false}/>,
         });
     },
 });
@@ -21,7 +21,7 @@ FlowRouter.route('/admin', {
     name: 'admin',
     action() {
         mount(App, {
-            main: <SideBarUI/>,
+            main: <SideBarUI showRequest={true}/>,
         });
     },
 });

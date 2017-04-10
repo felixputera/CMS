@@ -128,7 +128,7 @@ class SideBarUI extends Component {
         return (
             <div className="side-bar-content">
                 <Reports order={this.state.order} info={this.props.reportInfo} onOrderChanged={this.handleChange.bind(this)}/>
-                { this.props.user?
+                { (this.props.user && this.props.showRequest) ?
                 <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                     <Requests requestlist={this.props.mapMarkers.Requests} setMapCenter={this.setCenter.bind(this)}
                     tempMarker={this.state.tempMarker} hideShowForm={this.hideShowForm.bind(this)} hideForm={this.state.hideForm}/>

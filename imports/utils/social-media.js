@@ -34,7 +34,7 @@ export const sendEmail = (recipient, text) => {
 };
 
 export const postTwitter = (text) => {
-    const charCount = text.length();
+    const charCount = text.length;
     if (charCount <= 140) {
         T.post('statuses/update', {status: text}, function (err, data, response) {
             console.log(data);

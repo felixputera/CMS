@@ -39,5 +39,8 @@ SyncedCron.add({
 
 Meteor.startup(() => {
     Meteor.call('psi.fetch');
+    const socMedMessage = Meteor.call('socMedReport');
+    postTwitter(socMedMessage);
+    postFacebook(socMedMessage);
     SyncedCron.start();
 });

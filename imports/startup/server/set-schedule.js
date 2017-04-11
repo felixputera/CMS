@@ -38,9 +38,9 @@ SyncedCron.add({
 });
 
 Meteor.startup(() => {
-    Meteor.call('psi.fetch');
-    const socMedMessage = Meteor.call('socMedReport');
-    postTwitter(socMedMessage);
-    postFacebook(socMedMessage);
+    Meteor.call('psi.fetch');							// get psi level from nea api
+    const socMedMessage = Meteor.call('socMedReport');	// associate message with info fetched
+    postTwitter(socMedMessage);							// post updated info on twitter
+    postFacebook(socMedMessage);						// post updated info on facebook
     SyncedCron.start();
 });

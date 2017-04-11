@@ -38,9 +38,6 @@ Meteor.methods({
         }
     },
     'crises.setResolved'(crisisId){
-        // if (!this.userId) {
-        //     throw new Meteor.Error('not-authorized');
-        // }
         Crises.update(crisisId, {
             $set:{
                 resolved: true,
